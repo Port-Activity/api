@@ -1,0 +1,9 @@
+/vendor/
+.history
+src/lib/init_local.php
+coverage
+src/lib/first-run.lock
+.env
+**/node_modules
+**/.DS_Store
+xdebug.log

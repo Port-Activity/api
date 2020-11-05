@@ -1,0 +1,175 @@
+{
+    "id": 1,
+    "events": [
+        {
+            "id": 1,
+            "location": "sea",
+            "timestamps": [
+                {
+                    "time_type": "Estimated",
+                    "state": "Arrival_Vessel_PortArea"
+                },
+                {
+                    "time_type": "LiveEstimated",
+                    "state": "Arrival_Vessel_PortArea"
+                },
+                {
+                    "time_type": "Recommended",
+                    "state": "Arrival_Vessel_PortArea"
+                },
+                {
+                    "time_type": "Planned",
+                    "state": "Arrival_Vessel_PortArea"
+                },
+                {
+                    "time_type": "Actual",
+                    "state": "Arrival_Vessel_TrafficArea"
+                },
+                {
+                    "time_type": "Actual",
+                    "state": "Arrival_Vessel_AnchorageArea"
+                },
+                {
+                    "time_type": "Estimated",
+                    "state": "Pilotage_Commenced",
+                    "time": "2020-01-02T16:30:00+00:00",
+                    "created_at": "2020-01-02T15:15:09+00:00",
+                    "created_by": 9,
+                    "payload": {
+                        "direction": "inbound"
+                    },
+                    "source": "Test api key"
+                },
+                {
+                    "time_type": "Planned",
+                    "state": "Pilotage_Commenced",
+                    "payload": {
+                        "direction": "inbound"
+                    }
+                },
+                {
+                    "time_type": "Actual",
+                    "state": "Pilotage_Commenced",
+                    "time": "2020-01-02T16:25:00+00:00",
+                    "created_at": "2020-01-02T16:30:14+00:00",
+                    "created_by": 9,
+                    "payload": {
+                        "direction": "inbound"
+                    },
+                    "source": "Test api key"
+                },
+                {
+                    "time_type": "Actual",
+                    "state": "Arrival_Vessel_PortArea"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "location": "port",
+            "timestamps": [
+                {
+                    "time_type": "Actual",
+                    "state": "Arrival_Vessel_Berth"
+                },
+                {
+                    "time_type": "Actual",
+                    "state": "Pilotage_Completed",
+                    "time": "2020-01-02T17:16:00+00:00",
+                    "created_at": "2020-01-02T17:20:09+00:00",
+                    "created_by": 9,
+                    "payload": {
+                        "direction": "inbound"
+                    },
+                    "source": "Test api key"
+                },
+                {
+                    "time_type": "Actual",
+                    "state": "CargoOp_Commenced",
+                    "time": "2020-01-02T18:15:00+00:00",
+                    "created_at": "2020-01-04T00:00:25+00:00",
+                    "created_by": 12,
+                    "source": "Test api key"
+                },
+                {
+                    "time_type": "Estimated",
+                    "state": "CargoOp_Completed"
+                },
+                {
+                    "time_type": "Actual",
+                    "state": "CargoOp_Completed",
+                    "time": "2020-01-02T18:15:00+00:00",
+                    "created_at": "2020-01-04T00:00:25+00:00",
+                    "created_by": 12,
+                    "source": "Test api key"
+                },
+                {
+                    "time_type": "Estimated",
+                    "state": "Departure_Vessel_Berth",
+                    "time": "2020-01-02T23:05:00+00:00",
+                    "created_at": "2020-01-04T00:00:18+00:00",
+                    "created_by": 12,
+                    "source": "Test api key"
+                },
+                {
+                    "time_type": "Planned",
+                    "state": "Departure_Vessel_Berth"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "location": "sea",
+            "timestamps": [
+                {
+                    "time_type": "Estimated",
+                    "state": "Pilotage_Commenced",
+                    "time": "2020-01-02T21:00:00+00:00",
+                    "created_at": "2019-12-29T07:50:16+00:00",
+                    "created_by": 9,
+                    "payload": {
+                        "direction": "outbound"
+                    },
+                    "source": "Test api key"
+                },
+                {
+                    "time_type": "Planned",
+                    "state": "Pilotage_Commenced",
+                    "payload": {
+                        "direction": "outbound"
+                    }
+                },
+                {
+                    "time_type": "Actual",
+                    "state": "Pilotage_Commenced",
+                    "payload": {
+                        "direction": "outbound"
+                    }
+                },
+                {
+                    "time_type": "Actual",
+                    "state": "Departure_Vessel_Berth",
+                    "time": "2020-01-02T16:45:00+00:00",
+                    "created_at": "2020-01-02T16:55:00+00:00",
+                    "created_by": 4,
+                    "source": "Test api key"
+                },
+                {
+                    "time_type": "Actual",
+                    "state": "Pilotage_Completed",
+                    "time": "2020-01-02T23:10:00+00:00",
+                    "created_at": "2019-12-30T12:15:12+00:00",
+                    "created_by": 9,
+                    "payload": {
+                        "direction": "outbound"
+                    },
+                    "source": "Test api key"
+                },
+                {
+                    "time_type": "Actual",
+                    "state": "Departure_Vessel_PortArea"
+                }
+            ]
+        }
+    ]
+}

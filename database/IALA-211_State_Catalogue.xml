@@ -1,0 +1,2173 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<states xmlns="urn:mrn:stm:schema:state_catalogue:0.7">
+    <ServiceStates>
+        <ServiceState>
+            <StateId>Anchoring_Commenced</StateId>
+            <Name>Anchoring Commenced</Name>
+            <Description>Anchoring Operation Started</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>ANCHORING</ServiceObject>
+            <TimeSequence>COMMENCED</TimeSequence>
+            <Critical>true</Critical>
+        </ServiceState>
+        <ServiceState>
+            <StateId>Anchoring_Completed</StateId>
+            <Name>Anchoring Completed</Name>
+            <Description>Anchoring Operation Completed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>ANCHORING</ServiceObject>
+            <TimeSequence>COMPLETED</TimeSequence>
+            <Critical>true</Critical>
+        </ServiceState>
+        <ServiceState>
+            <StateId>MooringOp_Commenced</StateId>
+            <Name>Mooring Operation Commenced</Name>
+            <Description>Mooring Operation Commenced</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>MOORING_OPERATION</ServiceObject>
+            <TimeSequence>COMMENCED</TimeSequence>
+            <Critical>true</Critical>
+        </ServiceState>
+        <ServiceState>
+            <StateId>MooringOp_Completed</StateId>
+            <Name>Mooring Operation Completed</Name>
+            <Description>Mooring Operation Completed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>MOORING_OPERATION</ServiceObject>
+            <TimeSequence>COMPLETED</TimeSequence>
+            <Critical>true</Critical>
+        </ServiceState>
+        <ServiceState>
+            <StateId>UnMooringOp_Commenced</StateId>
+            <Name>Unmooring Operation Commenced</Name>
+            <Description>Departure Mooring Operation Commenced</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>UNMOORING_OPERATION</ServiceObject>
+            <TimeSequence>COMMENCED</TimeSequence>
+            <Critical>true</Critical>
+        </ServiceState>
+        <ServiceState>
+            <StateId>UnMooringOp_Completed</StateId>
+            <Name>Unmooring Operation Completed</Name>
+            <Description>Departure Mooring Operation Completed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>UNMOORING_OPERATION</ServiceObject>
+            <TimeSequence>COMPLETED</TimeSequence>
+            <Critical>true</Critical>
+        </ServiceState>
+        <ServiceState>
+            <StateId>BerthShifting_Commenced</StateId>
+            <Name>Berth Shifting Commenced</Name>
+            <Description>Berth Shifting Commenced</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>BERTH_SHIFTING</ServiceObject>
+            <TimeSequence>COMMENCED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>BerthShifting_Completed</StateId>
+            <Name>Berth Shifting Completed</Name>
+            <Description>Berth Shifting Completed</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>BERTH_SHIFTING</ServiceObject>
+            <TimeSequence>COMPLETED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>Bunkering_Commenced</StateId>
+            <Name>Bunkering Operation Commenced</Name>
+            <Description>Bunkering Operation Commenced</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>BUNKERING_OPERATION</ServiceObject>
+            <TimeSequence>COMMENCED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>Bunkering_Completed</StateId>
+            <Name>Bunkering Operation Completed</Name>
+            <Description>Bunkering Operation Completed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>BUNKERING_OPERATION</ServiceObject>
+            <TimeSequence>COMPLETED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>CargoOp_Commenced</StateId>
+            <Name>Cargo Operations Commenced</Name>
+            <Description>Cargo operation commenced</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>CARGO_OPERATION</ServiceObject>
+            <TimeSequence>COMMENCED</TimeSequence>
+            <Critical>true</Critical>
+        </ServiceState>
+        <ServiceState>
+            <StateId>CargoOp_Completed</StateId>
+            <Name>Cargo Operations Completed</Name>
+            <Description>Cargo operations completed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>CARGO_OPERATION</ServiceObject>
+            <TimeSequence>COMPLETED</TimeSequence>
+            <Critical>true</Critical>
+        </ServiceState>
+        <ServiceState>
+            <StateId>LoadingOp_Commenced</StateId>
+            <Name>Loading Operations Commenced</Name>
+            <Description>Loading Operations Started </Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>LOADING_OPERATION</ServiceObject>
+            <TimeSequence>COMMENCED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>LoadingOp_Completed</StateId>
+            <Name>Loading Operations Completed</Name>
+            <Description>Loading Operations Finished</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>LOADING_OPERATION</ServiceObject>
+            <TimeSequence>COMPLETED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>UnloadingOp_Commenced</StateId>
+            <Name>Unloading Operations Commenced</Name>
+            <Description>Unloading Operations Started</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>UNLOADING_OPERATION</ServiceObject>
+            <TimeSequence>COMMENCED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>UnloadingOp_Completed</StateId>
+            <Name>Unloading Operations Completed</Name>
+            <Description>Unloading Operations Finished</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>UNLOADING_OPERATION</ServiceObject>
+            <TimeSequence>COMPLETED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>EscortTowage_Commenced</StateId>
+            <Name>Escort Towage Commenced</Name>
+            <Description>Escort tug connected to vessel or Escort towage operation commence</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>ESCORT_TOWAGE</ServiceObject>
+            <TimeSequence>COMMENCED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>EscortTowage_Completed</StateId>
+            <Name>Escort Towage Completed</Name>
+            <Description>Escort tug disconnected to vessel or Escort towage operation completed</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>ESCORT_TOWAGE</ServiceObject>
+            <TimeSequence>COMPLETED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>Forklift_Commenced</StateId>
+            <Name>Forklift Commenced</Name>
+            <Description>Forklift Commenced</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>FORKLIFT</ServiceObject>
+            <TimeSequence>COMMENCED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>Forklift_Completed</StateId>
+            <Name>Forklift Completed</Name>
+            <Description>Forklift Completed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>FORKLIFT</ServiceObject>
+            <TimeSequence>COMPLETED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>Gangway_Commenced</StateId>
+            <Name>Gangway Commenced</Name>
+            <Description>Gangway Commenced</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>GANGWAY_OPERATION</ServiceObject>
+            <TimeSequence>COMMENCED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>Gangway_Completed</StateId>
+            <Name>Gangway Completed</Name>
+            <Description>Gangway Completed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>GANGWAY_OPERATION</ServiceObject>
+            <TimeSequence>COMPLETED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>GarbageOp_Commenced</StateId>
+            <Name>Garbage Operation Commenced</Name>
+            <Description>Garbage Disposal Operation Commenced</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>GARBAGE_OPERATION</ServiceObject>
+            <TimeSequence>COMMENCED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>GarbageOp_Completed</StateId>
+            <Name>Garbage Operation Completed</Name>
+            <Description>Garbage Disposal Operation Completed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>GARBAGE_OPERATION</ServiceObject>
+            <TimeSequence>COMPLETED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>IceBreaking_Commenced</StateId>
+            <Name>IceBreaking Operation Commenced</Name>
+            <Description>IceBreaking Operation Commenced</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>ICEBREAKING_OPERATION</ServiceObject>
+            <TimeSequence>COMMENCED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>IceBreaking_Completed</StateId>
+            <Name>IceBreaking Operation Completed</Name>
+            <Description>IceBreaking Operation Completed</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>ICEBREAKING_OPERATION</ServiceObject>
+            <TimeSequence>COMPLETED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>LubeOil_Commenced</StateId>
+            <Name>Lube Oil Operation Commenced</Name>
+            <Description>Lube Oil Operation Commenced</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>LUBEOIL_OPERATION</ServiceObject>
+            <TimeSequence>COMMENCED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>LubeOil_Completed</StateId>
+            <Name>Lube Oil Operation Completed</Name>
+            <Description>Lube Oil Operation Completed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>LUBEOIL_OPERATION</ServiceObject>
+            <TimeSequence>COMPLETED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>Pilotage_Commenced</StateId>
+            <Name>Pilotage Commenced</Name>
+            <Description>Pilotage Commenced</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>PILOTAGE</ServiceObject>
+            <TimeSequence>COMMENCED</TimeSequence>
+            <Critical>true</Critical>
+        </ServiceState>
+        <ServiceState>
+            <StateId>Pilotage_Completed</StateId>
+            <Name>Pilotage Completed</Name>
+            <Description>Pilotage Completed </Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>PILOTAGE</ServiceObject>
+            <TimeSequence>COMPLETED</TimeSequence>
+            <Critical>true</Critical>
+        </ServiceState>
+        <ServiceState>
+            <StateId>PostCargoSurvey_Commenced</StateId>
+            <Name>Post cargo survey commenced</Name>
+            <Description>Post cargo survey commenced</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>POSTCARGOSURVEY</ServiceObject>
+            <TimeSequence>COMMENCED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>PostCargoSurvey_Completed</StateId>
+            <Name>Post cargo survey completed</Name>
+            <Description>Post cargo survey completed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>POSTCARGOSURVEY</ServiceObject>
+            <TimeSequence>COMPLETED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>PreCargoSurvey_Commenced</StateId>
+            <Name>Pre Cargo Survey Commenced</Name>
+            <Description>Pre cargo survey commenced</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>PRECARGOSURVEY</ServiceObject>
+            <TimeSequence>COMMENCED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>PreCargoSurvey_Completed</StateId>
+            <Name>Pre Cargo Survey Completed</Name>
+            <Description>Pre cargo survey completed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>PRECARGOSURVEY</ServiceObject>
+            <TimeSequence>COMPLETED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>Provision_Commenced</StateId>
+            <Name>Provision Operation Commenced</Name>
+            <Description>Provision Operation started</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>PROVISION_OPERATION</ServiceObject>
+            <TimeSequence>COMMENCED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>Provision_Completed</StateId>
+            <Name>Provision Operation Completed</Name>
+            <Description>Provision Operation finnished</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>PROVISION_OPERATION</ServiceObject>
+            <TimeSequence>COMPLETED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>ReadyToSailOp_Commenced</StateId>
+            <Name>Ready-to-Sail Operations Commenced</Name>
+            <Description>Ready-to-Sail Operations initiated</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>READYTOSAIL_OPERATION</ServiceObject>
+            <TimeSequence>COMMENCED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>ReadyToSailOp_Completed</StateId>
+            <Name>Ready-to-Sail Operations Completed</Name>
+            <Description>Ready-to-Sail Operations Completed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>READYTOSAIL_OPERATION</ServiceObject>
+            <TimeSequence>COMPLETED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>Security_Commenced</StateId>
+            <Name>Security Commenced</Name>
+            <Description>Security Commenced</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>SECURITY_OPERATION</ServiceObject>
+            <TimeSequence>COMMENCED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>Security_Completed</StateId>
+            <Name>Security Completed</Name>
+            <Description>Security Completed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>SECURITY_OPERATION</ServiceObject>
+            <TimeSequence>COMPLETED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>SlopOp_Commenced</StateId>
+            <Name>Slop Operation Commenced</Name>
+            <Description>Slop Operation starts</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>SLOP_OPERATION</ServiceObject>
+            <TimeSequence>COMMENCED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>SlopOp_Completed</StateId>
+            <Name>Slop Operation Completed</Name>
+            <Description>Slop Operation stops</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>SLOP_OPERATION</ServiceObject>
+            <TimeSequence>COMPLETED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>SludgeOp_Commenced</StateId>
+            <Name>Sludge Operation Commenced</Name>
+            <Description>Sludge Operation starts</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>SLUDGE_OPERATION</ServiceObject>
+            <TimeSequence>COMMENCED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>SludgeOp_Completed</StateId>
+            <Name>Sludge Operation Completed</Name>
+            <Description>Sludge Operation stops</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>SLUDGE_OPERATION</ServiceObject>
+            <TimeSequence>COMPLETED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>Tours_Commenced</StateId>
+            <Name>Tours Commenced</Name>
+            <Description>Tours Commenced</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>TOURS</ServiceObject>
+            <TimeSequence>COMMENCED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>Tours_Completed</StateId>
+            <Name>Tours Completed</Name>
+            <Description>Tours Completed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>TOURS</ServiceObject>
+            <TimeSequence>COMPLETED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>Towage_Commenced</StateId>
+            <Name>Towage Commenced</Name>
+            <Description>Harbour/assistance towage commenced</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>TOWAGE</ServiceObject>
+            <TimeSequence>COMMENCED</TimeSequence>
+            <Critical>true</Critical>
+        </ServiceState>
+        <ServiceState>
+            <StateId>Towage_Completed</StateId>
+            <Name>Towage Completed</Name>
+            <Description>Harbour/assistance towage completed</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>TOWAGE</ServiceObject>
+            <TimeSequence>COMPLETED</TimeSequence>
+            <Critical>true</Critical>
+        </ServiceState>
+        <ServiceState>
+            <StateId>WaterOp_Commenced</StateId>
+            <Name>Water Operation Commenced</Name>
+            <Description>Fresh Water Operation Commenced</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>WATER_OPERATION</ServiceObject>
+            <TimeSequence>COMMENCED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>WaterOp_Completed</StateId>
+            <Name>Water Operation Completed</Name>
+            <Description>Fresh Water Operation Completed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>WATER_OPERATION</ServiceObject>
+            <TimeSequence>COMPLETED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>DepartureAnchoringOp_Commenced</StateId>
+            <Name>Departure Anchoring Operation Commenced</Name>
+            <Description>Start heaving up anchor  (an anchoring spot is a berth and req/conf departure as such)</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>DEPARTURE_ANCHORING_OPERATION</ServiceObject>
+            <TimeSequence>COMMENCED</TimeSequence>
+        </ServiceState>
+        <ServiceState>
+            <StateId>DepartureAnchoringOp_Completed</StateId>
+            <Name>Departure Anchoring Operation Completed</Name>
+            <Description>Vessel Anchor Aweigh</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>DEPARTURE_ANCHORING_OPERATION</ServiceObject>
+            <TimeSequence>COMPLETED</TimeSequence>
+        </ServiceState>
+    </ServiceStates>
+    <LocationStates>
+        <LocationState>
+            <StateId>Arrival_Agent_Berth</StateId>
+            <Name>Arrival Agent Berth</Name>
+            <Description>Agent arrived to berth</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>AGENT</ReferenceObject>
+            <LocationType>BERTH</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_Agent_Berth</StateId>
+            <Name>Departure Agent Berth</Name>
+            <Description>Agent left berth</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>AGENT</ReferenceObject>
+            <LocationType>BERTH</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_Moorers_Berth</StateId>
+            <Name>Arrival Moorer Berth</Name>
+            <Description>Moorers arrived to Berth </Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>MOORER</ReferenceObject>
+            <LocationType>BERTH</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_Moorers_Berth</StateId>
+            <Name>Departure Moorers Berth</Name>
+            <Description>Moorers has departed from berth</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>MOORER</ReferenceObject>
+            <LocationType>BERTH</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_Pilot_Berth</StateId>
+            <Name>Arrival Pilot Berth</Name>
+            <Description>Pilot arrived to berth</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>PILOT</ReferenceObject>
+            <LocationType>BERTH</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_Pilot_Berth</StateId>
+            <Name>Departure Pilot Berth</Name>
+            <Description>Pilot departed from berth</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>PILOT</ReferenceObject>
+            <LocationType>BERTH</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_Pontoons_and_Fenders_Berth</StateId>
+            <Name>Arrival Pontoons&amp;Fenders Berth</Name>
+            <Description>Pontoons &amp; Fenders at berth</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>PONTOONS_AND_FENDERS</ReferenceObject>
+            <LocationType>BERTH</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_Pontoons_and_Fenders_Berth</StateId>
+            <Name>Departure Pontoons&amp;Fenders Berth</Name>
+            <Description>Pontoons &amp; Fenders removed from berth</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>PONTOONS_AND_FENDERS</ReferenceObject>
+            <LocationType>BERTH</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_Security_Berth</StateId>
+            <Name>Arrival Security Berth</Name>
+            <Description>Security arrived to berth</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>SECURITY</ReferenceObject>
+            <LocationType>BERTH</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_Security_Berth</StateId>
+            <Name>Departure Security Berth</Name>
+            <Description>Security departed from berth</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>SECURITY</ReferenceObject>
+            <LocationType>BERTH</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_Tug_Berth</StateId>
+            <Name>Arrival Tug Berth</Name>
+            <Description>Tug arrived at berth</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>TUG</ReferenceObject>
+            <LocationType>BERTH</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_Tug_Berth</StateId>
+            <Name>Departure Tug Berth</Name>
+            <Description>Tug departed from berth</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>TUG</ReferenceObject>
+            <LocationType>BERTH</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_Vessel_Berth</StateId>
+            <Name>Arrival Vessel Berth</Name>
+            <Description>Vessels arrived to assigned berth (could also capture anchoring area if no distinction is made between berth and anchorage area in sending system)</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>VESSEL</ReferenceObject>
+            <LocationType>BERTH</LocationType>
+            <Critical>true</Critical>
+	</LocationState>
+        <LocationState>
+            <StateId>Departure_Vessel_Berth</StateId>
+            <Name>Departure Vessel Berth</Name>
+            <Description>Vessels departed from berth (could also capture anchoring area if no distinction is made between berth and anchorage area)</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>VESSEL</ReferenceObject>
+            <LocationType>BERTH</LocationType>
+            <Critical>true</Critical>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_Vessel_AnchorageArea</StateId>
+            <Name>Arrival Vessel Anchoring Area</Name>
+            <Description>Vessel arrived anchoring area</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>VESSEL</ReferenceObject>
+            <LocationType>ANCHORING_AREA</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_Vessel_AnchorageArea</StateId>
+            <Name>Departure Vessel Anchoring Area</Name>
+            <Description>Vessel departed anchoring area</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>VESSEL</ReferenceObject>
+            <LocationType>ANCHORING_AREA</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_Tug_TugZone</StateId>
+            <Name>Arrival Tug TugZone</Name>
+            <Description>Tug arrived to tug zone (during departure) / Tug arrivals to tug zone</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>TUG</ReferenceObject>
+            <LocationType>TUG_ZONE</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_Tug_TugZone</StateId>
+            <Name>Departure Tug TugZone</Name>
+            <Description>Tug departed from tug zone</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>TUG</ReferenceObject>
+            <LocationType>TUG_ZONE</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_Vessel_TugZone</StateId>
+            <Name>Arrival Vessel TugZone</Name>
+            <Description>Vessel arrived to tug zone (during departure) / Vessel arrives to tug zone </Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>VESSEL</ReferenceObject>
+            <LocationType>TUG_ZONE</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_Vessel_TugZone</StateId>
+            <Name>Departure Vessel TugZone</Name>
+            <Description>Vessel departed from tug zone (with or without towage)</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>VESSEL</ReferenceObject>
+            <LocationType>TUG_ZONE</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_EscortTug_TugZone</StateId>
+            <Name>Arrival EscortTug Tug zone</Name>
+            <Description>Escort tug arrived to vessel in tug zone</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>ESCORT_TUG</ReferenceObject>
+            <LocationType>TUG_ZONE</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_EscortTug_TugZone</StateId>
+            <Name>Departure EscortTug Tug Zone</Name>
+            <Description>Escort tug departed from vessel in tug zone</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>ESCORT_TUG</ReferenceObject>
+            <LocationType>TUG_ZONE</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_EscortTug_ETugZone</StateId>
+            <Name>Arrival EscortTug EscortTugZone</Name>
+            <Description>Escort tug arrived to vessel at escort tug zone</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>ESCORT_TUG</ReferenceObject>
+            <LocationType>ETUG_ZONE</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_EscortTug_ETugZone</StateId>
+            <Name>Departure EscortTug EscortTugZone</Name>
+            <Description>Escort tug departed from vessel at escort tug zone</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>ESCORT_TUG</ReferenceObject>
+            <LocationType>ETUG_ZONE</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_Vessel_ETugZone</StateId>
+            <Name>Arrival Vessel EscortTugZone</Name>
+            <Description>Vessel arrived at Escort tug zone</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>VESSEL</ReferenceObject>
+            <LocationType>ETUG_ZONE</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_Vessel_ETugZone</StateId>
+            <Name>Departure Vessel Escort Tug zone</Name>
+            <Description>Vessel departed from escort tug zone (with or without escort)</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>VESSEL</ReferenceObject>
+            <LocationType>ETUG_ZONE</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_Pilot_PilotBA</StateId>
+            <Name>Arrival Pilot PilotBoardingArea</Name>
+            <Description>Pilot arrived to PilotBoardingArea </Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>PILOT</ReferenceObject>
+            <LocationType>PILOT_BOARDING_AREA</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_Pilot_PilotBA</StateId>
+            <Name>Departure Pilot PilotBoardingArea</Name>
+            <Description>Pilot departed from PilotBoardingArea</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>PILOT</ReferenceObject>
+            <LocationType>PILOT_BOARDING_AREA</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_PilotBoat_PilotBA</StateId>
+            <Name>Arrival Pilotboat PilotBoardingArea</Name>
+            <Description>Pilotboat arrived to PilotBoardingArea</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>PILOT_BOAT</ReferenceObject>
+            <LocationType>PILOT_BOARDING_AREA</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_PilotBoat_PilotBA</StateId>
+            <Name>Pilotboat Departure from Pilot Boarding Area</Name>
+            <Description> Pilotboat departed from PilotBoardingArea</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>PILOT_BOAT</ReferenceObject>
+            <LocationType>PILOT_BOARDING_AREA</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_Vessel_PilotBA</StateId>
+            <Name>Arrival Vessel PilotBoardingArea</Name>
+            <Description>Vessel arrived to PBA during arrival/departure</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>VESSEL</ReferenceObject>
+            <LocationType>PILOT_BOARDING_AREA</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_Vessel_PilotBA</StateId>
+            <Name>Departure Vessel PilotBoardingArea</Name>
+            <Description>Vessel departed from PBA during arrival/departure</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>VESSEL</ReferenceObject>
+            <LocationType>PILOT_BOARDING_AREA</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_Passenger_Vessel</StateId>
+            <Name>Arrival Passenger Vessel</Name>
+            <Description>All Passengers Onboard</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>PASSENGER</ReferenceObject>
+            <LocationType>VESSEL</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_Passenger_Vessel</StateId>
+            <Name>Departure Passenger Vessel</Name>
+            <Description>All Passengers dissembarked</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>PASSENGER</ReferenceObject>
+            <LocationType>VESSEL</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_Pilot_Vessel</StateId>
+            <Name>Arrival Pilot Vessel</Name>
+            <Description>Pilot Onboard (POB)</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>PILOT</ReferenceObject>
+            <LocationType>VESSEL</LocationType>
+            <Critical>true</Critical>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_Pilot_Vessel</StateId>
+            <Name>Pilot Vessel Departed</Name>
+            <Description>Pilot disembark the vessel</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>PILOT</ReferenceObject>
+            <LocationType>VESSEL</LocationType>
+            <Critical>true</Critical>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_EscortTug_Vessel</StateId>
+            <Name>Arrival Escort Tug Vessel</Name>
+            <Description>EscortTug has arrived to the vessel</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>ESCORT_TUG</ReferenceObject>
+            <LocationType>VESSEL</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_EscortTug_Vessel</StateId>
+            <Name>Departure Escort Tug Vessel</Name>
+            <Description>EscortTug has left vessel </Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>ESCORT_TUG</ReferenceObject>
+            <LocationType>VESSEL</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_IceBreaker_Vessel</StateId>
+            <Name>Arrival IceBreaker Vessel</Name>
+            <Description>IceBreaker has arrived to the vessel</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>ICEBREAKER</ReferenceObject>
+            <LocationType>VESSEL</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_IceBreaker_Vessel</StateId>
+            <Name>Departure IceBreaker Vessel </Name>
+            <Description>IceBreaker departed from Vessel, mission completed, aborted</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>ICEBREAKER</ReferenceObject>
+            <LocationType>VESSEL</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_Tug_Vessel</StateId>
+            <Name>Arrival Tug Vessel</Name>
+            <Description>The tugboat has arrived to the vessel</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>TUG</ReferenceObject>
+            <LocationType>VESSEL</LocationType>
+            <Critical>true</Critical>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_Tug_Vessel</StateId>
+            <Name>Departure Tug Vessel</Name>
+            <Description>Tug and vessel has been disconnected</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>TUG</ReferenceObject>
+            <LocationType>VESSEL</LocationType>
+            <Critical>true</Critical>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_BunkerVessel_Vessel</StateId>
+            <Name>Bunker Vessel Alongside Vessel</Name>
+            <Description>Bunker vessel is alongside the vessel</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>BUNKER_VESSEL</ReferenceObject>
+            <LocationType>VESSEL</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_BunkerVessel_Vessel</StateId>
+            <Name>Bunker Vessel Departed Vessel</Name>
+            <Description>Bunker vessel has departed the Vessel</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>BUNKER_VESSEL</ReferenceObject>
+            <LocationType>VESSEL</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_SludgeVessel_Vessel</StateId>
+            <Name>Sludge Vessel Alongside Vessel</Name>
+            <Description>Sludge vessel is alongside vessel</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>SLUDGE_VESSEL</ReferenceObject>
+            <LocationType>VESSEL</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_SludgeVessel_Vessel</StateId>
+            <Name>Sludge Vessel Departed Vessel</Name>
+            <Description>Sludge vessel has departed the vessel</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>SLUDGE_VESSEL</ReferenceObject>
+            <LocationType>VESSEL</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_SlopVessel_Vessel</StateId>
+            <Name>Slop Vessel Alongside Vessel</Name>
+            <Description>Slop vessel is alongside vessel</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>SLOP_VESSEL</ReferenceObject>
+            <LocationType>VESSEL</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_SlopVessel_Vessel</StateId>
+            <Name>Slop Vessel Departed Vessel</Name>
+            <Description>Slop vessel has departed the vessel</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>SLOP_VESSEL</ReferenceObject>
+            <LocationType>VESSEL</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_FreshWaterVessel_Vessel</StateId>
+            <Name>Water Vessel Alongside Vessel</Name>
+            <Description>Water vessel is alongside vessel</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>FRESH_WATER_VESSEL</ReferenceObject>
+            <LocationType>VESSEL</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_FreshWaterVessel_Vessel</StateId>
+            <Name>Water Vessel Departed Vessel</Name>
+            <Description>Water vessel has departed the vessel</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>FRESH_WATER_VESSEL</ReferenceObject>
+            <LocationType>VESSEL</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_PilotBoat_Vessel</StateId>
+            <Name>Pilot Boat Alongside Vessel</Name>
+            <Description>Pilot boat is alongside vessel</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>PILOT_BOAT</ReferenceObject>
+            <LocationType>VESSEL</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_PilotBoat_Vessel</StateId>
+            <Name>Pilot Boat Departed Vessel</Name>
+            <Description>Pilot boat has departed the vessel</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>PILOT_BOAT</ReferenceObject>
+            <LocationType>VESSEL</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_Vessel_TrafficArea</StateId>
+            <Name>Arrival Vessel Traffic Area</Name>
+            <Description>The vessel entered the VTS Traffic area of the port</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>VESSEL</ReferenceObject>
+            <LocationType>TRAFFIC_AREA</LocationType>
+	    <Critical>true</Critical>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_Vessel_TrafficArea</StateId>
+            <Name>Departure Vessel TrafficArea</Name>
+            <Description>Vessel departed from VTS traffic area</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>VESSEL</ReferenceObject>
+            <LocationType>TRAFFIC_AREA</LocationType>
+	    <Critical>true</Critical>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_Vessel_PortArea</StateId>
+            <Name>Arrival Vessel Port Area</Name>
+            <Description>The vessel entered the Port Area (inner line)</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>VESSEL</ReferenceObject>
+            <LocationType>PORT_AREA</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_Vessel_PortArea</StateId>
+            <Name>Departure Vessel Port Area</Name>
+            <Description>The vessel departs from the Port Area (inner line)</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>VESSEL</ReferenceObject>
+            <LocationType>PORT_AREA</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_Tug_HomeBase</StateId>
+            <Name>Arrival Tug HomeBase</Name>
+            <Description>Tug has arrived to Home base</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>TUG</ReferenceObject>
+            <LocationType>HOME_BASE</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_Tug_HomeBase</StateId>
+            <Name>Departure Tug HomeBase</Name>
+            <Description>Tug has departed from Home base</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>TUG</ReferenceObject>
+            <LocationType>HOME_BASE</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_PilotBoat_HomeBase</StateId>
+            <Name>Arrival PilotBoat HomeBase</Name>
+            <Description>Pilot boat has arrived to Home base</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>PILOT_BOAT</ReferenceObject>
+            <LocationType>HOME_BASE</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_PilotBoat_HomeBase</StateId>
+            <Name>Departure PilotBoat HomeBase</Name>
+            <Description>Pilot boat has departed to Home base</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>PILOT_BOAT</ReferenceObject>
+            <LocationType>HOME_BASE</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_EscortTug_HomeBase</StateId>
+            <Name>Arrival PilotBoat HomeBase</Name>
+            <Description>Pilot has arrived to Home Base</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>ESCORT_TUG</ReferenceObject>
+            <LocationType>HOME_BASE</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_EscortTug_HomeBase</StateId>
+            <Name>Departure PilotBoat HomeBase</Name>
+            <Description>Pilot has departed from Home Base</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>ESCORT_TUG</ReferenceObject>
+            <LocationType>HOME_BASE</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_IceBreaker_RendezvArea</StateId>
+            <Name>Arrival IceBreaker Rendezvous Area</Name>
+            <Description>IceBreaker arrived at rendezvous area</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>ICEBREAKER</ReferenceObject>
+            <LocationType>RENDEZV_AREA</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_IceBreaker_RendezvArea</StateId>
+            <Name>Departure Rendezvous Area</Name>
+            <Description>IceBreaker departed rendezvous area, with or without vessels connected.</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>ICEBREAKER</ReferenceObject>
+            <LocationType>RENDEZV_AREA</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_Vessel_RendezvArea</StateId>
+            <Name>Arrival Vessel Rendezvous Area</Name>
+            <Description>Vessel Arrived at rendezvous area</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>VESSEL</ReferenceObject>
+            <LocationType>RENDEZV_AREA</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_Vessel_RendezvArea</StateId>
+            <Name>Departure Rendezvous Area</Name>
+            <Description>Vessel departed rendezvous area, following alone/convoy or connected to IceBreaker</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>VESSEL</ReferenceObject>
+            <LocationType>RENDEZV_AREA</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_IceBreaker_LOC</StateId>
+            <Name>Arrival IceBreaker LOC</Name>
+            <Description>Icebreaker arrived to an unspecified location</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>ICEBREAKER</ReferenceObject>
+            <LocationType>LOC</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_IceBreaker_LOC</StateId>
+            <Name>Departure IceBreaker LOC</Name>
+            <Description>IceBreaker departed from current LOC (unspecified) to transit to Vessel</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>ICEBREAKER</ReferenceObject>
+            <LocationType>LOC</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_Vessel_LOC</StateId>
+            <Name>Arrival Vessel LOC</Name>
+            <Description>Vessel arrived to an unspecified location</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>VESSEL</ReferenceObject>
+            <LocationType>LOC</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_Vessel_LOC</StateId>
+            <Name>Departure Vessel LOC</Name>
+            <Description>Vessel departed from a particular (unspecified) location</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>VESSEL</ReferenceObject>
+            <LocationType>LOC</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_PilotBoat_LOC</StateId>
+            <Name>Arrival Pilotboat LOC</Name>
+            <Description>Pilotboat arrived to an unspecified location</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>PILOT_BOAT</ReferenceObject>
+            <LocationType>LOC</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_PilotBoat_LOC</StateId>
+            <Name>Departure PilotBoat LOC</Name>
+            <Description>PilotBoath departed from current LOC (unspecified)</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>PILOT_BOAT</ReferenceObject>
+            <LocationType>LOC</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_EscortTug_LOC</StateId>
+            <Name>Arrival Escort Tug LOC</Name>
+            <Description>Escort tug arrived to an unspecified location</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>ESCORT_TUG</ReferenceObject>
+            <LocationType>LOC</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_EscortTug_LOC</StateId>
+            <Name>Departure Escort Tug LOC</Name>
+            <Description>Escort tug transited from previous (unspecified) location to its next towage operation </Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>ESCORT_TUG</ReferenceObject>
+            <LocationType>LOC</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Arrival_Tug_LOC</StateId>
+            <Name>Arrival Tug LOC</Name>
+            <Description>Tug arrived to an unspecified location</Description>
+            <TimeSequence>ARRIVAL_TO</TimeSequence>
+            <ReferenceObject>TUG</ReferenceObject>
+            <LocationType>LOC</LocationType>
+        </LocationState>
+        <LocationState>
+            <StateId>Departure_Tug_LOC</StateId>
+            <Name>Departure Tug LOC</Name>
+            <Description>Tug transited from previous (unspecified) location to its next towage operation</Description>
+            <TimeSequence>DEPARTURE_FROM</TimeSequence>
+            <ReferenceObject>TUG</ReferenceObject>
+            <LocationType>LOC</LocationType>
+        </LocationState>
+    </LocationStates>
+    <AdministrationStates>
+        <AdministrationState>
+            <StateId>AnchoringOp_Requested</StateId>
+            <Name>Anchoring Operation Requested</Name>
+            <Description>Anchoring Operation Requested</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>ANCHORING</ServiceObject>
+            <TimeSequence>REQUESTED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>AnchoringOp_ReqReceived</StateId>
+            <Name>Anchoring Operation Request Received</Name>
+            <Description>Anchoring Operation Request Received</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>ANCHORING</ServiceObject>
+            <TimeSequence>REQUEST_RECEIVED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>AnchoringOp_Confirmed</StateId>
+            <Name>Anchoring Operation Confirmed</Name>
+            <Description>Anchoring Operation Confirmed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>ANCHORING</ServiceObject>
+            <TimeSequence>CONFIRMED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>AnchoringOp_Denied</StateId>
+            <Name>Anchoring Operation Denied</Name>
+            <Description>Anchoring Operation Denied</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>ANCHORING</ServiceObject>
+            <TimeSequence>DENIED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>AnchoringOp_Cancelled</StateId>
+            <Name>Anchoring Operation Cancelled</Name>
+            <Description>Anchoring Operation Cancelled</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>ANCHORING</ServiceObject>
+            <TimeSequence>CANCELLED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>MooringOp_Requested</StateId>
+            <Name>Moorers Requested</Name>
+            <Description>Mooring Requested</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>MOORING_OPERATION</ServiceObject>
+            <TimeSequence>REQUESTED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>MooringOp_ReqReceived</StateId>
+            <Name>Moorers Request Received</Name>
+            <Description>Mooring Request Received</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>MOORING_OPERATION</ServiceObject>
+            <TimeSequence>REQUEST_RECEIVED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>MooringOp_Confirmed</StateId>
+            <Name>Moorers Confirmed</Name>
+            <Description>Mooring confirmed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>MOORING_OPERATION</ServiceObject>
+            <TimeSequence>CONFIRMED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>MooringOp_Denied</StateId>
+            <Name>Mooring Op Denied</Name>
+            <Description>Mooring Denied</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>MOORING_OPERATION</ServiceObject>
+            <TimeSequence>DENIED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>MooringOp_Cancelled</StateId>
+            <Name>Mooring Op Cancelled</Name>
+            <Description>Mooring Denied</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>MOORING_OPERATION</ServiceObject>
+            <TimeSequence>CANCELLED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>UnMooringOp_Requested</StateId>
+            <Name>Unmooring Requested</Name>
+            <Description>Departure Moorers Requested</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>UNMOORING_OPERATION</ServiceObject>
+            <TimeSequence>REQUESTED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>UnMooringOp_ReqReceived</StateId>
+            <Name>Unmoorers Request Received</Name>
+            <Description>Departure Moorers Request Received</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>UNMOORING_OPERATION</ServiceObject>
+            <TimeSequence>REQUEST_RECEIVED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>UnMooringOp_Confirmed</StateId>
+            <Name>Unmoorers Confirmed</Name>
+            <Description>Departure Moorers Confirmed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>UNMOORING_OPERATION</ServiceObject>
+            <TimeSequence>CONFIRMED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>UnMooringOp_Denied</StateId>
+            <Name>Unmoorers Denied</Name>
+            <Description>Departure Moorers Denied</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>UNMOORING_OPERATION</ServiceObject>
+            <TimeSequence>DENIED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>UnMooringOp_Cancelled</StateId>
+            <Name>Unmoorers Denied</Name>
+            <Description>Departure Moorers Denied</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>UNMOORING_OPERATION</ServiceObject>
+            <TimeSequence>CANCELLED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>BerthShifting_Requested</StateId>
+            <Name>Berth Shifting Requested</Name>
+            <Description>Berth Shifting Requested</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>BERTH_SHIFTING</ServiceObject>
+            <TimeSequence>REQUESTED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>BerthShifting_ReqReceived</StateId>
+            <Name>Berth Shifting Request Received</Name>
+            <Description>Berth Shifting Request Received</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>BERTH_SHIFTING</ServiceObject>
+            <TimeSequence>REQUEST_RECEIVED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>BerthShifting_Confirmed</StateId>
+            <Name>Berth Shifting Confirmed</Name>
+            <Description>Berth Shifting Confirmed</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>BERTH_SHIFTING</ServiceObject>
+            <TimeSequence>CONFIRMED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>BerthShifting_Denied</StateId>
+            <Name>Berth Shifting Denied</Name>
+            <Description>Berth Shifting Denied</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>BERTH_SHIFTING</ServiceObject>
+            <TimeSequence>DENIED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>BerthShifting_Cancelled</StateId>
+            <Name>Berth Shifting Cancelled</Name>
+            <Description>Berth Shifting Cancelled</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>BERTH_SHIFTING</ServiceObject>
+            <TimeSequence>CANCELLED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Bunkering_Requested</StateId>
+            <Name>Bunkering Operation Requested</Name>
+            <Description>Bunkering Operation Requested</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>BUNKERING_OPERATION</ServiceObject>
+            <TimeSequence>REQUESTED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Bunkering_ReqReceived</StateId>
+            <Name>Bunkering Operation Request Received</Name>
+            <Description>Bunkering Operation Request Received</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>BUNKERING_OPERATION</ServiceObject>
+            <TimeSequence>REQUEST_RECEIVED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Bunkering_Confirmed</StateId>
+            <Name>Bunkering Operation Confirmed</Name>
+            <Description>Bunkering Operation Confirmed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>BUNKERING_OPERATION</ServiceObject>
+            <TimeSequence>CONFIRMED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Bunkering_Denied</StateId>
+            <Name>Bunkering Operation Request Denied</Name>
+            <Description>Bunkering Operation Request Denied</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>BUNKERING_OPERATION</ServiceObject>
+            <TimeSequence>DENIED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Bunkering_Cancelled</StateId>
+            <Name>Bunkering Operation Cancelled</Name>
+            <Description>Bunkering Operation Cancelled</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>BUNKERING_OPERATION</ServiceObject>
+            <TimeSequence>CANCELLED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>CargoOp_Requested</StateId>
+            <Name>Cargo Operations Requested</Name>
+            <Description>Cargo operations requested</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>CARGO_OPERATION</ServiceObject>
+            <TimeSequence>REQUESTED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>CargoOp_ReqReceived</StateId>
+            <Name>Cargo Operations Request Received</Name>
+            <Description>Cargo Operations Request Received</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>CARGO_OPERATION</ServiceObject>
+            <TimeSequence>REQUEST_RECEIVED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>CargoOp_Confirmed</StateId>
+            <Name>Cargo Operations Confirmed</Name>
+            <Description>Cargo operations confirmed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>CARGO_OPERATION</ServiceObject>
+            <TimeSequence>CONFIRMED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>CargoOp_Denied</StateId>
+            <Name>Cargo Operations Request Denied</Name>
+            <Description>Cargo Operations Request Denied</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>CARGO_OPERATION</ServiceObject>
+            <TimeSequence>DENIED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>CargoOp_Cancelled</StateId>
+            <Name>Cargo Operations Cancelled</Name>
+            <Description>Cargo Operations Cancelled</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>CARGO_OPERATION</ServiceObject>
+            <TimeSequence>CANCELLED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>LoadingOp_Requested</StateId>
+            <Name>Loading Operations Requested</Name>
+            <Description>Loading Operations Requested</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>LOADING_OPERATION</ServiceObject>
+            <TimeSequence>REQUESTED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>LoadingOp_ReqReceived</StateId>
+            <Name>Loading Operations Request Received</Name>
+            <Description>Loading Operations Request Received</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>LOADING_OPERATION</ServiceObject>
+            <TimeSequence>REQUEST_RECEIVED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>LoadingOp_Confirmed</StateId>
+            <Name>Loading Operations Confirmed</Name>
+            <Description>Loading Operations Confirmed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>LOADING_OPERATION</ServiceObject>
+            <TimeSequence>CONFIRMED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>LoadingOp_Denied</StateId>
+            <Name>Loading Operations Request Denied</Name>
+            <Description>Loading Operations Request Denied</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>LOADING_OPERATION</ServiceObject>
+            <TimeSequence>DENIED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>LoadingOp_Cancelled</StateId>
+            <Name>Loading Operations Cancelled</Name>
+            <Description>Loading Operations Cancelled</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>LOADING_OPERATION</ServiceObject>
+            <TimeSequence>CANCELLED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>UnloadingOp_Requested</StateId>
+            <Name>Unloading Operations Requested</Name>
+            <Description>Unloading Operations Requested</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>UNLOADING_OPERATION</ServiceObject>
+            <TimeSequence>REQUESTED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>UnloadingOp_ReqReceived</StateId>
+            <Name>Unloading Operations Request Received</Name>
+            <Description>Unloading Operations Request Received</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>UNLOADING_OPERATION</ServiceObject>
+            <TimeSequence>REQUEST_RECEIVED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>UnloadingOp_Confirmed</StateId>
+            <Name>Unloading Operations Confirmed</Name>
+            <Description>Unloading Operations Confirmed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>UNLOADING_OPERATION</ServiceObject>
+            <TimeSequence>CONFIRMED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>UnloadingOp_Denied</StateId>
+            <Name>Unloading Operations Request Denied</Name>
+            <Description>Unloading Operations Request Denied</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>UNLOADING_OPERATION</ServiceObject>
+            <TimeSequence>DENIED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>UnloadingOp_Cancelled</StateId>
+            <Name>Unloading Operations Cancelled</Name>
+            <Description>Unloading Operations Cancelled</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>UNLOADING_OPERATION</ServiceObject>
+            <TimeSequence>CANCELLED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>EscortTowage_Requested</StateId>
+            <Name>Escort Towage Requested</Name>
+            <Description>A request for Escort towage has been made</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>ESCORT_TOWAGE</ServiceObject>
+            <TimeSequence>REQUESTED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>EscortTowage_ReqReceived</StateId>
+            <Name>Escort Towage Request Received</Name>
+            <Description>A request for Escort towage has been received</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>ESCORT_TOWAGE</ServiceObject>
+            <TimeSequence>REQUEST_RECEIVED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>EscortTowage_Confirmed</StateId>
+            <Name>Escort Towage Confirmed</Name>
+            <Description>Booking of Escort towage confirmed</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>ESCORT_TOWAGE</ServiceObject>
+            <TimeSequence>CONFIRMED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>EscortTowage_Denied</StateId>
+            <Name>Escort Towage Request Denied</Name>
+            <Description>A request for Escort towage has been denied</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>ESCORT_TOWAGE</ServiceObject>
+            <TimeSequence>DENIED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>EscortTowage_Cancelled</StateId>
+            <Name>Escort Towage Cancelled</Name>
+            <Description>Escort Towage has been cancelled</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>ESCORT_TOWAGE</ServiceObject>
+            <TimeSequence>CANCELLED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Forklift_Requested</StateId>
+            <Name>Forklift Requested</Name>
+            <Description>Forklift Requested</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>FORKLIFT</ServiceObject>
+            <TimeSequence>REQUESTED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Forklift_ReqReceived</StateId>
+            <Name>Forklift Request Received</Name>
+            <Description>Forklift Request Received</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>FORKLIFT</ServiceObject>
+            <TimeSequence>REQUEST_RECEIVED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Forklift_Confirmed</StateId>
+            <Name>Forklift Confirmed</Name>
+            <Description>Forklift Confirmed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>FORKLIFT</ServiceObject>
+            <TimeSequence>CONFIRMED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Forklift_Denied</StateId>
+            <Name>Forklift Denied</Name>
+            <Description>Forklift Denied</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>FORKLIFT</ServiceObject>
+            <TimeSequence>DENIED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Forklift_Cancelled</StateId>
+            <Name>Forklift Cancelled</Name>
+            <Description>Forklift Cancelled</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>FORKLIFT</ServiceObject>
+            <TimeSequence>CANCELLED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Gangway_Requested</StateId>
+            <Name>Gangway Requested</Name>
+            <Description>Gangway Requested</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>GANGWAY_OPERATION</ServiceObject>
+            <TimeSequence>REQUESTED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Gangway_ReqReceived</StateId>
+            <Name>Gangway Request Received</Name>
+            <Description>Gangway Request Received</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>GANGWAY_OPERATION</ServiceObject>
+            <TimeSequence>REQUEST_RECEIVED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Gangway_Confirmed</StateId>
+            <Name>Gangway Confirmed</Name>
+            <Description>Gangway Confirmed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>GANGWAY_OPERATION</ServiceObject>
+            <TimeSequence>CONFIRMED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Gangway_Denied</StateId>
+            <Name>Gangway Denied</Name>
+            <Description>Gangway Denied</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>GANGWAY_OPERATION</ServiceObject>
+            <TimeSequence>DENIED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Gangway_Cancelled</StateId>
+            <Name>Ganway Cancelled</Name>
+            <Description>Gangway Cancelled</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>GANGWAY_OPERATION</ServiceObject>
+            <TimeSequence>CANCELLED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>GarbageOp_Requested</StateId>
+            <Name>Garbage Operation Requested</Name>
+            <Description>Garbage Disposal Requested</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>GARBAGE_OPERATION</ServiceObject>
+            <TimeSequence>REQUESTED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>GarbageOp_ReqReceived</StateId>
+            <Name>Garbage Operation Request Received</Name>
+            <Description>Garbage Operation Request Received</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>GARBAGE_OPERATION</ServiceObject>
+            <TimeSequence>REQUEST_RECEIVED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>GarbageOp_Confirmed</StateId>
+            <Name>Garbage Operation Confirmed</Name>
+            <Description>Garbage Disposal Confirmed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>GARBAGE_OPERATION</ServiceObject>
+            <TimeSequence>CONFIRMED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>GarbageOp_Denied</StateId>
+            <Name>Garbage Operation Request Denied</Name>
+            <Description>Garbage Operation Request Denied</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>GARBAGE_OPERATION</ServiceObject>
+            <TimeSequence>DENIED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>GarbageOp_Cancelled</StateId>
+            <Name>Garbage Operation Cancelled</Name>
+            <Description>Garbage Operation Cancelled</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>GARBAGE_OPERATION</ServiceObject>
+            <TimeSequence>CANCELLED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>IceBreaking_Requested</StateId>
+            <Name>IceBreaking Operation Requested</Name>
+            <Description>A request for IceBreaking Operation has been made</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>ICEBREAKING_OPERATION</ServiceObject>
+            <TimeSequence>REQUESTED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>IceBreaking_ReqReceived</StateId>
+            <Name>IceBreaking Operation Request Received</Name>
+            <Description>A request for IceBreaking Operation has been received</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>ICEBREAKING_OPERATION</ServiceObject>
+            <TimeSequence>REQUEST_RECEIVED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>IceBreaking_Confirmed</StateId>
+            <Name>IceBreaking Operation Confirmed</Name>
+            <Description>IceBreaking Operation Confirmed</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>ICEBREAKING_OPERATION</ServiceObject>
+            <TimeSequence>CONFIRMED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>IceBreaking_Denied</StateId>
+            <Name>IceBreaking Operation Request Denied</Name>
+            <Description>A request for IceBreaking Operation has been denied</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>ICEBREAKING_OPERATION</ServiceObject>
+            <TimeSequence>DENIED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>IceBreaking_Cancelled</StateId>
+            <Name>IceBreaking Operation Cancelled </Name>
+            <Description>IceBreaking Operation Cancelled </Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>ICEBREAKING_OPERATION</ServiceObject>
+            <TimeSequence>CANCELLED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>LubeOil_Requested</StateId>
+            <Name>Lube Oil Operation Requested</Name>
+            <Description>Lube Oil Operation Requested</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>LUBEOIL_OPERATION</ServiceObject>
+            <TimeSequence>REQUESTED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>LubeOil_ReqReceived</StateId>
+            <Name>Lube Oil Operation Request Received</Name>
+            <Description>Lube Oil Operation Request Received</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>LUBEOIL_OPERATION</ServiceObject>
+            <TimeSequence>REQUEST_RECEIVED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>LubeOil_Confirmed</StateId>
+            <Name>Lube Oil Operation Confirmed</Name>
+            <Description>Lube Oil Operation Confirmed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>LUBEOIL_OPERATION</ServiceObject>
+            <TimeSequence>CONFIRMED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>LubeOil_Denied</StateId>
+            <Name>Lube Oil Operation Request Denied</Name>
+            <Description>Lube Oil Operation Request Denied</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>LUBEOIL_OPERATION</ServiceObject>
+            <TimeSequence>DENIED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>LubeOil_Cancelled</StateId>
+            <Name>Lube Oil Operation Cancelled</Name>
+            <Description>Lube Oil Operation Cancelled</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>LUBEOIL_OPERATION</ServiceObject>
+            <TimeSequence>CANCELLED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Pilotage_Requested</StateId>
+            <Name>Pilotage Requested</Name>
+            <Description>Pilot service has been requested</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>PILOTAGE</ServiceObject>
+            <TimeSequence>REQUESTED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Pilotage_ReqReceived</StateId>
+            <Name>Pilotage Request Recieved</Name>
+            <Description>Pilot service request has been received</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>PILOTAGE</ServiceObject>
+            <TimeSequence>REQUEST_RECEIVED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Pilotage_Confirmed</StateId>
+            <Name>Pilotage Confirmed</Name>
+            <Description>Pilot service booked</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>PILOTAGE</ServiceObject>
+            <TimeSequence>CONFIRMED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Pilotage_Denied</StateId>
+            <Name>Pilotage Request Denied</Name>
+            <Description>Pilot service request has been denied</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>PILOTAGE</ServiceObject>
+            <TimeSequence>DENIED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Pilotage_Cancelled</StateId>
+            <Name>Pilotage Cancelled</Name>
+            <Description>Pilot service Cancelled</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>PILOTAGE</ServiceObject>
+            <TimeSequence>CANCELLED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>PostCargoSurvey_Requested</StateId>
+            <Name>Post Cargo Survey Requested</Name>
+            <Description>Post cargo survey requested</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>POSTCARGOSURVEY</ServiceObject>
+            <TimeSequence>REQUESTED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>PostCargoSurvey_ReqReceived</StateId>
+            <Name>Post Cargo Survey Request Received</Name>
+            <Description>Post Cargo Survey Request Received</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>POSTCARGOSURVEY</ServiceObject>
+            <TimeSequence>REQUEST_RECEIVED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>PostCargoSurvey_Confirmed</StateId>
+            <Name>Post cargo survey confirmed</Name>
+            <Description>Post cargo survey confirmed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>POSTCARGOSURVEY</ServiceObject>
+            <TimeSequence>CONFIRMED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>PostCargoSurvey_Denied</StateId>
+            <Name>Post Cargo Survey Request Denied</Name>
+            <Description>Post Cargo Survey Request Denied</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>POSTCARGOSURVEY</ServiceObject>
+            <TimeSequence>DENIED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>PostCargoSurvey_Cancelled</StateId>
+            <Name>Post Cargo Survey Request Cancelled</Name>
+            <Description>Post Cargo Survey Request Cancelled</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>POSTCARGOSURVEY</ServiceObject>
+            <TimeSequence>CANCELLED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>PreCargoSurvey_Requested</StateId>
+            <Name>Pre Cargo Survey Requested</Name>
+            <Description>Pre cargo survey requested</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>PRECARGOSURVEY</ServiceObject>
+            <TimeSequence>REQUESTED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>PreCargoSurvey_ReqReceived</StateId>
+            <Name>Pre Cargo Survey Request Received</Name>
+            <Description>Pre cargo survey request received</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>PRECARGOSURVEY</ServiceObject>
+            <TimeSequence>REQUEST_RECEIVED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>PreCargoSurvey_Confirmed</StateId>
+            <Name>Pre Cargo Survey Confirmed</Name>
+            <Description>Pre cargo survey confirmed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>PRECARGOSURVEY</ServiceObject>
+            <TimeSequence>CONFIRMED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>PreCargoSurvey_Denied</StateId>
+            <Name>Pre Cargo Survey Request Denied</Name>
+            <Description>Pre cargo survey request denied</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>PRECARGOSURVEY</ServiceObject>
+            <TimeSequence>DENIED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>PreCargoSurvey_Cancelled</StateId>
+            <Name>Pre Cargo Survey Request Cancelled</Name>
+            <Description>Pre cargo survey request cancelled</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>PRECARGOSURVEY</ServiceObject>
+            <TimeSequence>CANCELLED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Provision_Requested</StateId>
+            <Name>Provision Operation Requested</Name>
+            <Description>Provision Operation Requested</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>PROVISION_OPERATION</ServiceObject>
+            <TimeSequence>REQUESTED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Provision_ReqReceived</StateId>
+            <Name>Provision Operation Request Received</Name>
+            <Description>Provision Operation Request Received</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>PROVISION_OPERATION</ServiceObject>
+            <TimeSequence>REQUEST_RECEIVED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Provision_Confirmed</StateId>
+            <Name>Provision Operation Confirmed</Name>
+            <Description>Provision Operation Confirmed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>PROVISION_OPERATION</ServiceObject>
+            <TimeSequence>CONFIRMED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Provision_Denied</StateId>
+            <Name>Provision Operation Request Denied</Name>
+            <Description>Provision Operation Request Denied</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>PROVISION_OPERATION</ServiceObject>
+            <TimeSequence>DENIED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Provision_Cancelled</StateId>
+            <Name>Provision Operation Request Cancelled</Name>
+            <Description>Provision Operation Request Cancelled</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>PROVISION_OPERATION</ServiceObject>
+            <TimeSequence>CANCELLED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Security_Requested</StateId>
+            <Name>Security Requested</Name>
+            <Description>Security Requested</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>SECURITY_OPERATION</ServiceObject>
+            <TimeSequence>REQUESTED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Security_ReqReceived</StateId>
+            <Name>Security Request Received</Name>
+            <Description>Security Request Received</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>SECURITY_OPERATION</ServiceObject>
+            <TimeSequence>REQUEST_RECEIVED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Security_Confirmed</StateId>
+            <Name>Security Confirmed</Name>
+            <Description>Security Confirmed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>SECURITY_OPERATION</ServiceObject>
+            <TimeSequence>CONFIRMED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Security_Denied</StateId>
+            <Name>Security Denied</Name>
+            <Description>Security Denied</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>SECURITY_OPERATION</ServiceObject>
+            <TimeSequence>DENIED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Security_Cancelled</StateId>
+            <Name>Security Cancelled</Name>
+            <Description>Security Cancelled</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>SECURITY_OPERATION</ServiceObject>
+            <TimeSequence>CANCELLED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>SlopOp_Requested</StateId>
+            <Name>Slop Operation Requested</Name>
+            <Description>Slop Operation requested</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>SLOP_OPERATION</ServiceObject>
+            <TimeSequence>REQUESTED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>SlopOp_ReqReceived</StateId>
+            <Name>Slop Operation Request Received</Name>
+            <Description>Slop Operation Request Received</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>SLOP_OPERATION</ServiceObject>
+            <TimeSequence>REQUEST_RECEIVED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>SlopOp_Confirmed</StateId>
+            <Name>Slop Operation Confirmed</Name>
+            <Description>Slop Operation confirmed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>SLOP_OPERATION</ServiceObject>
+            <TimeSequence>CONFIRMED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>SlopOp_Denied</StateId>
+            <Name>Slop Operation Request Denied</Name>
+            <Description>Slop Operation Request Denied</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>SLOP_OPERATION</ServiceObject>
+            <TimeSequence>DENIED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>SlopOp_Cancelled</StateId>
+            <Name>Slop Operation Cancelled</Name>
+            <Description>Slop Operation cancelled</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>SLOP_OPERATION</ServiceObject>
+            <TimeSequence>CANCELLED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>SludgeOp_Requested</StateId>
+            <Name>Sludge Operation Requested</Name>
+            <Description>Sludge Operation requested</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>SLUDGE_OPERATION</ServiceObject>
+            <TimeSequence>REQUESTED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>SludgeOp_ReqReceived</StateId>
+            <Name>Sludge Operation Request Received</Name>
+            <Description>Sludge Operation Request Received</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>SLUDGE_OPERATION</ServiceObject>
+            <TimeSequence>REQUEST_RECEIVED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>SludgeOp_Confirmed</StateId>
+            <Name>Sludge Operation Confirmed</Name>
+            <Description>Sludge Operation confirmed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>SLUDGE_OPERATION</ServiceObject>
+            <TimeSequence>CONFIRMED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>SludgeOp_Denied</StateId>
+            <Name>Sludge Operation Request Denied</Name>
+            <Description>Sludge Operation Request Denied</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>SLUDGE_OPERATION</ServiceObject>
+            <TimeSequence>DENIED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>SludgeOp_Cancelled</StateId>
+            <Name>Sludge Operation Cancelled</Name>
+            <Description>Sludge Operation Cancelled</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>SLUDGE_OPERATION</ServiceObject>
+            <TimeSequence>CANCELLED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Tours_Requested</StateId>
+            <Name>Tours Requested</Name>
+            <Description>Tours Requested</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>TOURS</ServiceObject>
+            <TimeSequence>REQUESTED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Tours_ReqReceived</StateId>
+            <Name>Tours Request Received</Name>
+            <Description>Tours Request Received</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>TOURS</ServiceObject>
+            <TimeSequence>REQUEST_RECEIVED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Tours_Confirmed</StateId>
+            <Name>Tours Confirmed</Name>
+            <Description>Tours Confirmed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>TOURS</ServiceObject>
+            <TimeSequence>CONFIRMED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Tours_Denied</StateId>
+            <Name>Tours Denied</Name>
+            <Description>Tours Denied</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>TOURS</ServiceObject>
+            <TimeSequence>DENIED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Tours_Cancelled</StateId>
+            <Name>Tours Cancelled</Name>
+            <Description>Tours Cancelled</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>TOURS</ServiceObject>
+            <TimeSequence>CANCELLED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Towage_Requested</StateId>
+            <Name>Towage Requested</Name>
+            <Description>Harbour/assistance towage service has been requested</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>TOWAGE</ServiceObject>
+            <TimeSequence>REQUESTED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Towage_ReqReceived</StateId>
+            <Name>Towage Request Received</Name>
+            <Description>Harbour/assistance towage service request received</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>TOWAGE</ServiceObject>
+            <TimeSequence>REQUEST_RECEIVED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Towage_Confirmed</StateId>
+            <Name>Towage Confirmed</Name>
+            <Description>Harbour/assistance towage service booked</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>TOWAGE</ServiceObject>
+            <TimeSequence>CONFIRMED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Towage_Denied</StateId>
+            <Name>Towage Request Denied</Name>
+            <Description>Harbour/assistance towage service request denied</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>TOWAGE</ServiceObject>
+            <TimeSequence>DENIED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>Towage_Cancelled</StateId>
+            <Name>Towage Cancelled</Name>
+            <Description>Harbour/assistance towage service has been cancelled</Description>
+            <ServiceType>NAUTICAL</ServiceType>
+            <ServiceObject>TOWAGE</ServiceObject>
+            <TimeSequence>CANCELLED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>WaterOp_Requested</StateId>
+            <Name>Water Operation Requested</Name>
+            <Description>Fresh Water Operation Requested</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>WATER_OPERATION</ServiceObject>
+            <TimeSequence>REQUESTED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>WaterOp_ReqReceived</StateId>
+            <Name>Water Operation Request Received</Name>
+            <Description>Fresh Water Operation Request Received</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>WATER_OPERATION</ServiceObject>
+            <TimeSequence>REQUEST_RECEIVED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>WaterOp_Confirmed</StateId>
+            <Name>Water Operation Confirmed</Name>
+            <Description>Fresh Water Operation Confirmed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>WATER_OPERATION</ServiceObject>
+            <TimeSequence>CONFIRMED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>WaterOp_Denied</StateId>
+            <Name>Water Operation Request Denied</Name>
+            <Description>Fresh Water Operation Denied</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>WATER_OPERATION</ServiceObject>
+            <TimeSequence>DENIED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>WaterOp_Cancelled</StateId>
+            <Name>Water Operation Cancelled</Name>
+            <Description>Fresh Water Operation Cancelled</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>WATER_OPERATION</ServiceObject>
+            <TimeSequence>CANCELLED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>VTSAreaDepart_Confirmed</StateId>
+            <Name>VTS TrafficArea Departure Confirmed</Name>
+            <Description>VTS confirms that vessel can departure from Traffic area</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>DEPARTURE_VTSAREA</ServiceObject>
+            <TimeSequence>CONFIRMED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>VTSAreaDepart_Denied</StateId>
+            <Name>VTS TrafficArea Departure Denied</Name>
+            <Description>VTS TrafficArea Departure Denied</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>DEPARTURE_VTSAREA</ServiceObject>
+            <TimeSequence>DENIED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>VTSAreaDepart_ReqReceived</StateId>
+            <Name>VTS TrafficArea Departure Request Received</Name>
+            <Description>VTS TrafficArea Departure Request Received</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>DEPARTURE_VTSAREA</ServiceObject>
+            <TimeSequence>REQUEST_RECEIVED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>VTSAreaDepart_Requested</StateId>
+            <Name>VTS TrafficArea Departure Requested</Name>
+            <Description>VTS TrafficArea Departure Requested</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>DEPARTURE_VTSAREA</ServiceObject>
+            <TimeSequence>REQUESTED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>VTSAreaDepart_Cancelled</StateId>
+            <Name>VTS TrafficArea Departure Cancelled</Name>
+            <Description>VTS TrafficArea Departure Cancelled</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>DEPARTURE_VTSAREA</ServiceObject>
+            <TimeSequence>CANCELLED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>VTSAreaEntry_Confirmed</StateId>
+            <Name>VTS TrafficArea Entry Confirmed</Name>
+            <Description>VTS confirms that vessel can enter Traffic area</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>ARRIVAL_VTSAREA</ServiceObject>
+            <TimeSequence>CONFIRMED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>VTSAreaEntry_Denied</StateId>
+            <Name>VTS TrafficArea Entry Denied</Name>
+            <Description>VTS TrafficArea Entry Denied</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>ARRIVAL_VTSAREA</ServiceObject>
+            <TimeSequence>DENIED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>VTSAreaEntry_ReqReceived</StateId>
+            <Name>VTS TrafficArea Entry Request Received</Name>
+            <Description>VTS TrafficArea Entry Request Received</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>ARRIVAL_VTSAREA</ServiceObject>
+            <TimeSequence>REQUEST_RECEIVED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>VTSAreaEntry_Requested</StateId>
+            <Name>VTS TrafficArea Entry Requested</Name>
+            <Description>VTS TrafficArea Entry Requested</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>ARRIVAL_VTSAREA</ServiceObject>
+            <TimeSequence>REQUESTED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>VTSAreaEntry_Cancelled</StateId>
+            <Name>VTS TrafficArea Entry Cancelled</Name>
+            <Description>VTS TrafficArea Entry Cancelled</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>ARRIVAL_VTSAREA</ServiceObject>
+            <TimeSequence>CANCELLED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>DepartureAnchoringOp_Confirmed</StateId>
+            <Name>Departure Anchoring Operation Confirmed</Name>
+            <Description>Departure Anchoring Operation Confirmed</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>DEPARTURE_ANCHORING_OPERATION</ServiceObject>
+            <TimeSequence>CONFIRMED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>DepartureAnchoringOp_Denied</StateId>
+            <Name>Departure Anchoring Operation Denied</Name>
+            <Description>Departure Anchoring Operation Denied</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>DEPARTURE_ANCHORING_OPERATION</ServiceObject>
+            <TimeSequence>DENIED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>DepartureAnchoringOp_ReqReceived</StateId>
+            <Name>Departure Anchoring Operation Request Received</Name>
+            <Description>Departure Anchoring Operation Request Received</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>DEPARTURE_ANCHORING_OPERATION</ServiceObject>
+            <TimeSequence>REQUEST_RECEIVED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>DepartureAnchoringOp_Requested</StateId>
+            <Name>Departure Anchoring Operation Requested</Name>
+            <Description>Departure Anchoring Operation Requested</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>DEPARTURE_ANCHORING_OPERATION</ServiceObject>
+            <TimeSequence>REQUESTED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>DepartureAnchoringOp_Cancelled</StateId>
+            <Name>Departure Anchoring Operation Cancelled</Name>
+            <Description>Departure Anchoring Operation Cancelled</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>DEPARTURE_ANCHORING_OPERATION</ServiceObject>
+            <TimeSequence>CANCELLED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>PortVisit_Confirmed</StateId>
+            <Name>Arrival Vessel Port Confirmed</Name>
+            <Description>A port call has been approved for the vessel </Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>ARRIVAL_PORTAREA</ServiceObject>
+            <TimeSequence>CONFIRMED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>PortVisit_Denied</StateId>
+            <Name>Arrival Vessel Port Request Denied</Name>
+            <Description>A port call has been denied</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>ARRIVAL_PORTAREA</ServiceObject>
+            <TimeSequence>DENIED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>PortVisit_ReqReceived</StateId>
+            <Name>Arrival Vessel Port Request Received</Name>
+            <Description>A port call has been received</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>ARRIVAL_PORTAREA</ServiceObject>
+            <TimeSequence>REQUEST_RECEIVED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>PortVisit_Requested</StateId>
+            <Name>Arrival Vessel Port Requested</Name>
+            <Description>A port call has been submitted for a vessel </Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>ARRIVAL_PORTAREA</ServiceObject>
+            <TimeSequence>REQUESTED</TimeSequence>
+        </AdministrationState>
+        <AdministrationState>
+            <StateId>PortVisit_Cancelled</StateId>
+            <Name>Arrival Vessel Port Cancelled</Name>
+            <Description>A port call has been cancelled</Description>
+            <ServiceType>STATIONARY</ServiceType>
+            <ServiceObject>ARRIVAL_PORTAREA</ServiceObject>
+            <TimeSequence>CANCELLED</TimeSequence>
+        </AdministrationState>
+    </AdministrationStates>
+</states>

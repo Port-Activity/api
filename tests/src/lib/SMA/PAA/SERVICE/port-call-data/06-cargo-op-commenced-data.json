@@ -1,0 +1,44 @@
+[
+  {
+    "time_type": "Estimated",
+    "state": "Arrival_Vessel_PortArea",
+    "time": "2020-02-03T22:53:39+00:00",
+    "created_at": "2020-02-03T23:19:22+00:00",
+    "created_by": 18
+  },
+  {
+    "time_type": "Estimated",
+    "state": "Arrival_Vessel_PortArea",
+    "time": "2020-02-04T22:53:39+00:00",
+    "created_at": "2020-02-04T23:19:22+00:00",
+    "created_by": 18
+  },
+  {
+    "time_type": "Actual",
+    "state": "Arrival_Vessel_Berth",
+    "time": "2020-02-05T22:53:39+00:00",
+    "created_at": "2020-02-05T23:19:22+00:00",
+    "created_by": 18
+  },
+  {
+    "time_type": "Actual",
+    "state": "CargoOp_Commenced",
+    "time": "2020-02-05T22:55:39+00:00",
+    "created_at": "2020-02-05T23:55:22+00:00",
+    "created_by": 18
+  },
+  {
+    "time_type": "Estimated",
+    "state": "Departure_Vessel_Berth",
+    "time": "2020-02-05T23:19:39+00:00",
+    "created_at": "2020-02-05T22:19:22+00:00",
+    "created_by": 18
+  },
+  {
+    "time_type": "Actual",
+    "state": "CargoOp_Completed",
+    "time": "2020-02-05T22:57:39+00:00",
+    "created_at": "2020-02-05T23:19:22+00:00",
+    "created_by": 18
+  }
+]

@@ -1,0 +1,16 @@
+[
+    {
+      "time_type": "Estimated",
+      "state": "Arrival_Vessel_PortArea",
+      "time": "2020-02-03T22:53:39+00:00",
+      "created_at": "2020-02-03T23:19:22+00:00",
+      "created_by": 18
+    },
+    {
+      "time_type": "Estimated",
+      "state": "Arrival_Vessel_PortArea",
+      "time": "2020-02-04T22:53:39+00:00",
+      "created_at": "2020-02-04T23:19:22+00:00",
+      "created_by": 18
+    }
+  ]

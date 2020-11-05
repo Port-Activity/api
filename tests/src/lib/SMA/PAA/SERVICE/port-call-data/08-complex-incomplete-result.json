@@ -1,0 +1,499 @@
+{
+    "id": 1,
+    "events": [
+        {
+            "id": 1,
+            "location": "sea",
+            "timestamps": [
+                {
+                    "time_type": "Estimated",
+                    "state": "Arrival_Vessel_PortArea",
+                    "imo": 9201827,
+                    "vessel_name": "LADY CARINA",
+                    "time_type_id": 2,
+                    "state_id": 55,
+                    "time": "2020-02-23 20:15:00+00",
+                    "payload": {
+                        "mmsi": "244621000",
+                        "to_port": "SEGVX",
+                        "call_sign": "PFBV",
+                        "from_port": "NLVLI",
+                        "net_weight": 2100,
+                        "external_id": "SE000486853",
+                        "nationality": "NL",
+                        "gross_weight": 4235,
+                        "original_message": {
+                            "eta": "2020-02-23T20:15:00Z",
+                            "etd": "2020-02-25T13:30:00Z",
+                            "imo": "9201827",
+                            "mmsi": "244621000",
+                            "name": "LADY CARINA",
+                            "callSign": "PFBV",
+                            "unLocode": "SEGVX",
+                            "flagState": "NL",
+                            "netWeight": 2100,
+                            "grossWeight": 4235,
+                            "portVisitID": "SE000486853",
+                            "updatedTime": "2020-02-25T09:10:07.7181346Z",
+                            "unLocodeNextPort": "FIPRS",
+                            "unLocodePreviousPort": "NLVLI"
+                        }
+                    },
+                    "port_call_id": 97,
+                    "is_trash": "no",
+                    "id": 6772,
+                    "created_at": "2020-02-25 09:18:19+00",
+                    "created_by": 17,
+                    "modified_at": "2020-02-25 09:18:19+00",
+                    "modified_by": 17,
+                    "source": "Test api key"
+                },
+                {
+                    "time_type": "LiveEstimated",
+                    "state": "Arrival_Vessel_PortArea"
+                },
+                {
+                    "time_type": "Recommended",
+                    "state": "Arrival_Vessel_PortArea"
+                },
+                {
+                    "time_type": "Planned",
+                    "state": "Arrival_Vessel_PortArea"
+                },
+                {
+                    "time_type": "Actual",
+                    "state": "Arrival_Vessel_TrafficArea"
+                },
+                {
+                    "time_type": "Actual",
+                    "state": "Arrival_Vessel_AnchorageArea"
+                },
+                {
+                    "time_type": "Estimated",
+                    "state": "Pilotage_Commenced",
+                    "imo": 9201827,
+                    "vessel_name": "LADY CARINA",
+                    "time_type_id": 2,
+                    "state_id": 201,
+                    "time": "2020-02-23 15:27:43+00",
+                    "payload": {
+                        "direction": "inbound",
+                        "vessel_loa": 108.5,
+                        "external_id": "SE000486853",
+                        "vessel_beam": 15.92,
+                        "vessel_draft": 5.6,
+                        "original_message": {
+                            "id": "1550866",
+                            "imo": 9201827,
+                            "shipLoa": 108.5,
+                            "toPoint": "\u00d6stra kajen 14 - G\u00e4vle",
+                            "shipBeam": 15.92,
+                            "statusId": 9,
+                            "unLocode": "SEGVX",
+                            "fromPoint": "Gr\u00e5sj\u00e4lsb\u00e5dan (syd om)",
+                            "timestamp": "2020-02-23T15:27:43.909295+00:00",
+                            "billNumber": 990315636,
+                            "eventBlocks": [
+                                {
+                                    "id": "2082687",
+                                    "lane": "G\u00e4vle - Gr\u00e5sj\u00e4lsb\u00e5dan\/Purrut",
+                                    "timestamp": "2020-02-23T15:27:43.9153021Z",
+                                    "actualEndTime": null,
+                                    "boardingPoint": "Gr\u00e5sj\u00e4lsb\u00e5dan (syd om)",
+                                    "plannedEndTime": "2020-02-23T21:15:00Z",
+                                    "actualStartTime": null,
+                                    "plannedStartTime": "2020-02-23T20:00:00Z",
+                                    "statusChangedDescription": null
+                                }
+                            ],
+                            "swPortVisitId": "SE000486853",
+                            "swPilotageType": "ARR",
+                            "shipCurrentDraft": 5.6,
+                            "statusDescription": "OrderConfirmed",
+                            "orderedPilotageStart": "2020-02-23T20:30:00Z"
+                        }
+                    },
+                    "port_call_id": 97,
+                    "is_trash": "no",
+                    "id": 6670,
+                    "created_at": "2020-02-24 10:50:21+00",
+                    "created_by": 8,
+                    "modified_at": "2020-02-24 10:50:21+00",
+                    "modified_by": 8,
+                    "source": "Test api key"
+                },
+                {
+                    "time_type": "Planned",
+                    "state": "Pilotage_Commenced",
+                    "payload": {
+                        "direction": "inbound"
+                    }
+                },
+                {
+                    "time_type": "Actual",
+                    "state": "Pilotage_Commenced",
+                    "imo": 9201827,
+                    "vessel_name": "LADY CARINA",
+                    "time_type_id": 3,
+                    "state_id": 105,
+                    "time": "2020-02-23 19:45:01+00",
+                    "payload": {
+                        "direction": "inbound",
+                        "vessel_loa": 108.5,
+                        "external_id": "SE000486853",
+                        "vessel_beam": 15.92,
+                        "vessel_draft": 5.6,
+                        "original_message": {
+                            "id": "1551111",
+                            "imo": 9201827,
+                            "shipLoa": 108.5,
+                            "toPoint": "\u00d6stra kajen 14 - G\u00e4vle",
+                            "shipBeam": 15.92,
+                            "statusId": 10,
+                            "unLocode": "SEGVX",
+                            "fromPoint": "Gr\u00e5sj\u00e4lsb\u00e5dan (syd om)",
+                            "timestamp": "2020-02-23T19:45:01.2394533+00:00",
+                            "billNumber": 990315636,
+                            "eventBlocks": [
+                                {
+                                    "id": "2082962",
+                                    "lane": "G\u00e4vle - Gr\u00e5sj\u00e4lsb\u00e5dan\/Purrut",
+                                    "timestamp": "2020-02-23T19:45:01.2424564Z",
+                                    "actualEndTime": null,
+                                    "boardingPoint": "Gr\u00e5sj\u00e4lsb\u00e5dan (syd om)",
+                                    "plannedEndTime": "2020-02-23T21:45:00Z",
+                                    "actualStartTime": "2020-02-23T20:30:00Z",
+                                    "plannedStartTime": "2020-02-23T20:30:00Z",
+                                    "statusChangedDescription": null
+                                }
+                            ],
+                            "swPortVisitId": "SE000486853",
+                            "swPilotageType": "ARR",
+                            "shipCurrentDraft": 5.6,
+                            "statusDescription": "OrderStarted",
+                            "orderedPilotageStart": "2020-02-23T20:30:00Z"
+                        }
+                    },
+                    "port_call_id": 97,
+                    "is_trash": "no",
+                    "id": 6671,
+                    "created_at": "2020-02-24 10:50:22+00",
+                    "created_by": 8,
+                    "modified_at": "2020-02-24 10:50:22+00",
+                    "modified_by": 8,
+                    "source": "Test api key"
+                },
+                {
+                    "time_type": "Actual",
+                    "state": "Arrival_Vessel_PortArea"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "location": "port",
+            "timestamps": [
+                {
+                    "time_type": "Actual",
+                    "state": "Arrival_Vessel_Berth"
+                },
+                {
+                    "time_type": "Actual",
+                    "state": "Pilotage_Completed",
+                    "imo": 9201827,
+                    "vessel_name": "LADY CARINA",
+                    "time_type_id": 3,
+                    "state_id": 106,
+                    "time": "2020-02-23 20:57:05+00",
+                    "payload": {
+                        "direction": "inbound",
+                        "vessel_loa": 108.5,
+                        "external_id": "SE000486853",
+                        "vessel_beam": 15.92,
+                        "vessel_draft": 5.6,
+                        "original_message": {
+                            "id": "1551160",
+                            "imo": 9201827,
+                            "shipLoa": 108.5,
+                            "toPoint": "\u00d6stra kajen 14 - G\u00e4vle",
+                            "shipBeam": 15.92,
+                            "statusId": 11,
+                            "unLocode": "SEGVX",
+                            "fromPoint": "Gr\u00e5sj\u00e4lsb\u00e5dan (syd om)",
+                            "timestamp": "2020-02-23T20:57:05.8110191+00:00",
+                            "billNumber": 990315636,
+                            "eventBlocks": [
+                                {
+                                    "id": "2083020",
+                                    "lane": "G\u00e4vle - Gr\u00e5sj\u00e4lsb\u00e5dan\/Purrut",
+                                    "timestamp": "2020-02-23T20:57:06.0612554Z",
+                                    "actualEndTime": "2020-02-23T22:00:00Z",
+                                    "boardingPoint": "Gr\u00e5sj\u00e4lsb\u00e5dan (syd om)",
+                                    "plannedEndTime": "2020-02-23T22:00:00Z",
+                                    "actualStartTime": "2020-02-23T20:30:00Z",
+                                    "plannedStartTime": "2020-02-23T20:30:00Z",
+                                    "statusChangedDescription": null
+                                }
+                            ],
+                            "swPortVisitId": "SE000486853",
+                            "swPilotageType": "ARR",
+                            "shipCurrentDraft": 5.6,
+                            "statusDescription": "OrderFinished",
+                            "orderedPilotageStart": "2020-02-23T20:30:00Z"
+                        }
+                    },
+                    "port_call_id": 97,
+                    "is_trash": "no",
+                    "id": 6672,
+                    "created_at": "2020-02-24 10:50:22+00",
+                    "created_by": 8,
+                    "modified_at": "2020-02-24 10:50:22+00",
+                    "modified_by": 8,
+                    "source": "Test api key"
+                },
+                {
+                    "time_type": "Actual",
+                    "state": "CargoOp_Commenced"
+                },
+                {
+                    "time_type": "Estimated",
+                    "state": "CargoOp_Completed"
+                },
+                {
+                    "time_type": "Actual",
+                    "state": "CargoOp_Completed"
+                },
+                {
+                    "time_type": "Estimated",
+                    "state": "Departure_Vessel_Berth",
+                    "imo": 9201827,
+                    "vessel_name": "LADY CARINA",
+                    "time_type_id": 2,
+                    "state_id": 14,
+                    "time": "2020-02-25 13:30:00+00",
+                    "payload": {
+                        "mmsi": "244621000",
+                        "to_port": "SEGVX",
+                        "call_sign": "PFBV",
+                        "from_port": "NLVLI",
+                        "net_weight": 2100,
+                        "external_id": "SE000486853",
+                        "nationality": "NL",
+                        "gross_weight": 4235,
+                        "original_message": {
+                            "eta": "2020-02-23T20:15:00Z",
+                            "etd": "2020-02-25T13:30:00Z",
+                            "imo": "9201827",
+                            "mmsi": "244621000",
+                            "name": "LADY CARINA",
+                            "callSign": "PFBV",
+                            "unLocode": "SEGVX",
+                            "flagState": "NL",
+                            "netWeight": 2100,
+                            "grossWeight": 4235,
+                            "portVisitID": "SE000486853",
+                            "updatedTime": "2020-02-25T09:10:07.7181346Z",
+                            "unLocodeNextPort": "FIPRS",
+                            "unLocodePreviousPort": "NLVLI"
+                        }
+                    },
+                    "port_call_id": 97,
+                    "is_trash": "no",
+                    "id": 6773,
+                    "created_at": "2020-02-25 09:18:19+00",
+                    "created_by": 17,
+                    "modified_at": "2020-02-25 09:18:19+00",
+                    "modified_by": 17,
+                    "source": "Test api key"
+                },
+                {
+                    "time_type": "Planned",
+                    "state": "Departure_Vessel_Berth"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "location": "sea",
+            "timestamps": [
+                {
+                    "time_type": "Estimated",
+                    "state": "Pilotage_Commenced",
+                    "imo": 9201827,
+                    "vessel_name": "LADY CARINA",
+                    "time_type_id": 2,
+                    "state_id": 201,
+                    "time": "2020-02-25 07:11:37+00",
+                    "payload": {
+                        "direction": "outbound",
+                        "vessel_loa": 108.5,
+                        "external_id": "SE000486853",
+                        "vessel_beam": 15.92,
+                        "vessel_draft": 4.5,
+                        "original_message": {
+                            "id": "1552689",
+                            "imo": 9201827,
+                            "shipLoa": 108.5,
+                            "toPoint": "Gr\u00e5sj\u00e4lsb\u00e5dan (syd om)",
+                            "shipBeam": 15.92,
+                            "statusId": 9,
+                            "unLocode": "SEGVX",
+                            "fromPoint": "\u00d6stra kajen 14 - G\u00e4vle",
+                            "timestamp": "2020-02-25T07:11:37.0449736+00:00",
+                            "billNumber": 990315637,
+                            "eventBlocks": [
+                                {
+                                    "id": "2085022",
+                                    "lane": "G\u00e4vle - Gr\u00e5sj\u00e4lsb\u00e5dan\/Purrut",
+                                    "timestamp": "2020-02-25T07:11:37.0439724Z",
+                                    "actualEndTime": null,
+                                    "boardingPoint": "\u00d6stra kajen 14 - G\u00e4vle",
+                                    "plannedEndTime": "2020-02-25T17:15:00Z",
+                                    "actualStartTime": null,
+                                    "plannedStartTime": "2020-02-25T16:00:00Z",
+                                    "statusChangedDescription": null
+                                }
+                            ],
+                            "swPortVisitId": "SE000486853",
+                            "swPilotageType": "DEP",
+                            "shipCurrentDraft": 4.5,
+                            "statusDescription": "OrderConfirmed",
+                            "orderedPilotageStart": "2020-02-25T16:00:00Z"
+                        }
+                    },
+                    "port_call_id": 97,
+                    "is_trash": "no",
+                    "id": 6814,
+                    "created_at": "2020-02-25 16:00:36+00",
+                    "created_by": 8,
+                    "modified_at": "2020-02-25 16:00:36+00",
+                    "modified_by": 8,
+                    "source": "Test api key"
+                },
+                {
+                    "time_type": "Planned",
+                    "state": "Pilotage_Commenced",
+                    "payload": {
+                        "direction": "outbound"
+                    }
+                },
+                {
+                    "time_type": "Actual",
+                    "state": "Pilotage_Commenced",
+                    "imo": 9201827,
+                    "vessel_name": "LADY CARINA",
+                    "time_type_id": 3,
+                    "state_id": 105,
+                    "time": "2020-02-25 13:26:01+00",
+                    "payload": {
+                        "direction": "outbound",
+                        "vessel_loa": 108.5,
+                        "external_id": "SE000486853",
+                        "vessel_beam": 15.92,
+                        "vessel_draft": 4.5,
+                        "original_message": {
+                            "id": "1553253",
+                            "imo": 9201827,
+                            "shipLoa": 108.5,
+                            "toPoint": "Gr\u00e5sj\u00e4lsb\u00e5dan (syd om)",
+                            "shipBeam": 15.92,
+                            "statusId": 10,
+                            "unLocode": "SEGVX",
+                            "fromPoint": "\u00d6stra kajen 14 - G\u00e4vle",
+                            "timestamp": "2020-02-25T13:26:01.5228853+00:00",
+                            "billNumber": 990315637,
+                            "eventBlocks": [
+                                {
+                                    "id": "2085750",
+                                    "lane": "G\u00e4vle - Gr\u00e5sj\u00e4lsb\u00e5dan\/Purrut",
+                                    "timestamp": "2020-02-25T13:26:01.5268891Z",
+                                    "actualEndTime": null,
+                                    "boardingPoint": "\u00d6stra kajen 14 - G\u00e4vle",
+                                    "plannedEndTime": "2020-02-25T15:45:00Z",
+                                    "actualStartTime": "2020-02-25T14:30:00Z",
+                                    "plannedStartTime": "2020-02-25T14:30:00Z",
+                                    "statusChangedDescription": null
+                                }
+                            ],
+                            "swPortVisitId": "SE000486853",
+                            "swPilotageType": "DEP",
+                            "shipCurrentDraft": 4.5,
+                            "statusDescription": "OrderStarted",
+                            "orderedPilotageStart": "2020-02-25T14:30:00Z"
+                        }
+                    },
+                    "port_call_id": 97,
+                    "is_trash": "no",
+                    "id": 6806,
+                    "created_at": "2020-02-25 14:30:23+00",
+                    "created_by": 8,
+                    "modified_at": "2020-02-25 14:30:23+00",
+                    "modified_by": 8,
+                    "source": "Test api key"
+                },
+                {
+                    "time_type": "Actual",
+                    "state": "Departure_Vessel_Berth"
+                },
+                {
+                    "time_type": "Actual",
+                    "state": "Pilotage_Completed",
+                    "imo": 9201827,
+                    "vessel_name": "LADY CARINA",
+                    "time_type_id": 3,
+                    "state_id": 106,
+                    "time": "2020-02-25 14:52:06+00",
+                    "payload": {
+                        "direction": "outbound",
+                        "vessel_loa": 108.5,
+                        "external_id": "SE000486853",
+                        "vessel_beam": 15.92,
+                        "vessel_draft": 4.5,
+                        "original_message": {
+                            "id": "1553349",
+                            "imo": 9201827,
+                            "shipLoa": 108.5,
+                            "toPoint": "Gr\u00e5sj\u00e4lsb\u00e5dan (syd om)",
+                            "shipBeam": 15.92,
+                            "statusId": 11,
+                            "unLocode": "SEGVX",
+                            "fromPoint": "\u00d6stra kajen 14 - G\u00e4vle",
+                            "timestamp": "2020-02-25T14:52:06.2774537+00:00",
+                            "billNumber": 990315637,
+                            "eventBlocks": [
+                                {
+                                    "id": "2085852",
+                                    "lane": "G\u00e4vle - Gr\u00e5sj\u00e4lsb\u00e5dan\/Purrut",
+                                    "timestamp": "2020-02-25T14:52:06.2804572Z",
+                                    "actualEndTime": "2020-02-25T15:55:00Z",
+                                    "boardingPoint": "\u00d6stra kajen 14 - G\u00e4vle",
+                                    "plannedEndTime": "2020-02-25T15:55:00Z",
+                                    "actualStartTime": "2020-02-25T14:30:00Z",
+                                    "plannedStartTime": "2020-02-25T14:30:00Z",
+                                    "statusChangedDescription": null
+                                }
+                            ],
+                            "swPortVisitId": "SE000486853",
+                            "swPilotageType": "DEP",
+                            "shipCurrentDraft": 4.5,
+                            "statusDescription": "OrderFinished",
+                            "orderedPilotageStart": "2020-02-25T14:30:00Z"
+                        }
+                    },
+                    "port_call_id": 97,
+                    "is_trash": "no",
+                    "id": 6808,
+                    "created_at": "2020-02-25 14:55:15+00",
+                    "created_by": 8,
+                    "modified_at": "2020-02-25 14:55:16+00",
+                    "modified_by": 8,
+                    "source": "Test api key"
+                },
+                {
+                    "time_type": "Actual",
+                    "state": "Departure_Vessel_PortArea"
+                }
+            ]
+        }
+    ]
+}

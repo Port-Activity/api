@@ -1,0 +1,47 @@
+stages:
+- name: Build
+  steps:
+  - runScriptConfig:
+      image: php:7
+      shellScript: |-
+        apt update
+        apt install -y wget git zip unzip
+        wget https://getcomposer.org/installer
+        php installer
+        php composer.phar install
+        make lint
+        make test
+        cat Dockerfile | sed 's/#__REMOVE_ON_DEPLOY__//g' | grep -v 'ONLY_FOR_DEV' > ./Dockerfile_deploy
+- name: Publish nginx image
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile_nginx
+      buildContext: .
+      tag: nginx:${CICD_EXECUTION_SEQUENCE}-${CICD_GIT_COMMIT}
+- name: Publish php image
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile_deploy
+      buildContext: .
+      tag: php:${CICD_EXECUTION_SEQUENCE}-${CICD_GIT_COMMIT}
+- name: Publish socket image
+  steps:
+  - publishImageConfig:
+      buildContext: socket
+      dockerfilePath: ./socket/Dockerfile
+      tag: socket:${CICD_EXECUTION_SEQUENCE}-${CICD_GIT_COMMIT}
+- name: Publish push notifications image
+  steps:
+  - publishImageConfig:
+      buildContext: push-notifications
+      dockerfilePath: ./push-notifications/Dockerfile
+      tag: push-notifications:${CICD_EXECUTION_SEQUENCE}-${CICD_GIT_COMMIT}
+- name: Deploy
+  steps:
+  - applyYamlConfig:
+      path: ./deploy/deployment.yaml
+  when:
+    branch:
+      include:
+      - master
+notification: {}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap = "vendor/autoload.php"
+    backupGlobals               = "false"
+    backupStaticAttributes      = "false"
+    colors                      = "true"
+    convertErrorsToExceptions   = "true"
+    convertNoticesToExceptions  = "true"
+    convertWarningsToExceptions = "true"
+    processIsolation            = "false"
+    stopOnFailure               = "false"
+    >
+
+    <testsuites>
+        <testsuite name="Project Test Suite">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory suffix=".php">src/</directory>
+        </whitelist>
+    </filter>
+
+    <php>
+        <env name="RTA_POINT_COORDINATES" value="1,2"/>
+        <env name="VIS_SERVICE_INSTANCE_URN" value="urn:mrn:stm:service:instance:sma:vis:portoffoo"/>
+        <env name="VIS_PORT_NAME" value="Port of Gävle"/>
+        <env name="VIS_PORT_UNLOCODE" value="SEGVX"/>
+        <env name="RTA_POINT_LOCATION_NAME" value="pilot boarding area"/>
+        <env name="VIS_SYNC_POINT_LAT" value="12.345"/>
+        <env name="VIS_SYNC_POINT_LON" value="67.89"/>
+        <env name="VIS_SYNC_POINT_RADIUS" value="1234"/>
+        <env name="MAP_DEFAULT_COORDINATES" value="60.699083,17.328354"/>
+        <env name="MAP_DEFAULT_ZOOM" value="6"/>
+    </php>
+
+</phpunit>

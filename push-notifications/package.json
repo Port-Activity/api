@@ -1,0 +1,31 @@
+{
+  "name": "push-notifications",
+  "version": "1.0.0",
+  "description": "Push notifications broker for expo and api",
+  "main": "server.js",
+  "author": "tomi.suomela@unikie.com",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "esm": "^3.2.25",
+    "expo-server-sdk": "^3.5.0",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.0",
+    "nodemon": "^2.0.2",
+    "prettier": "^1.19.1",
+    "redis": "^2.8.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-prettier": "^3.1.2"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "start": "node -r esm server.js",
+    "start:watch": "./node_modules/nodemon/bin/nodemon.js -r esm server.js --watch",
+    "start:docker": "node -r esm server.js"
+  }
+}
