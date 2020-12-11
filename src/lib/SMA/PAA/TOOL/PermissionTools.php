@@ -30,6 +30,8 @@ class PermissionTools
                 return true;
             } elseif ($permission === "export_api") {
                 return true;
+            } elseif ($permission === "update_sea_chart_location") {
+                return true;
             }
         }
 
@@ -101,6 +103,65 @@ class PermissionTools
 
         if (array_search($neededPermission, $permissions) !== false) {
             return true;
+        }
+
+        return false;
+    }
+
+    public function userManagementLevel(): string
+    {
+        $session = $this->session;
+
+        if ($session->userId()) {
+            $user = $session->user();
+
+            return $this->userUserManagementLevel($user);
+        }
+
+        return "";
+    }
+
+    public function userUserManagementLevel(UserModel $user): string
+    {
+        $rolePermissionRepository = new RolePermissionRepository();
+        $role = $user->getRole();
+        $permissions = $rolePermissionRepository->getRolePermissions($role);
+
+        if (array_search("manage_all_user", $permissions) !== false) {
+            return "all";
+        } elseif (array_search("manage_own_user", $permissions) !== false) {
+            return "own";
+        }
+
+        return "";
+    }
+
+    public function hasUserManagementPermission(UserModel $targetUser): bool
+    {
+        $session = $this->session;
+
+        if ($session->userId()) {
+            $user = $session->user();
+
+            return $this->userHasUserManagementPermission($user, $targetUser);
+        }
+
+        return false;
+    }
+
+    public function userHasUserManagementPermission(UserModel $user, UserModel $targetUser): bool
+    {
+        $rolePermissionRepository = new RolePermissionRepository();
+        $role = $user->getRole();
+        $permissions = $rolePermissionRepository->getRolePermissions($role);
+
+        $userManagementLevel = $this->userUserManagementLevel($user);
+        if ($userManagementLevel === "all") {
+            return true;
+        } elseif ($userManagementLevel === "own") {
+            if ($user->id === $targetUser->created_by) {
+                return true;
+            }
         }
 
         return false;

@@ -16,13 +16,18 @@ class UserModel extends OrmModel
     public $last_login_data;
     public $last_session_time;
     public $registration_code_id;
-    public $status = 'active';
+    public $status = "active";
     public $time_zone = null;
+    public $failed_logins = 0;
+    public $suspend_start = null;
+    public $locked = "f";
+    public $registration_type = "";
 
     public function __construct()
     {
         parent::__construct(__CLASS__);
     }
+
     public function dontLogFields()
     {
         return array(
@@ -31,26 +36,49 @@ class UserModel extends OrmModel
             ,"last_login_data"
         );
     }
+
+    public function setLocked(bool $locked)
+    {
+        $this->locked = $locked ? "t" : "f";
+    }
+
+    public function getLocked(): bool
+    {
+        return $this->locked === "t" || $this->locked === true;
+    }
+
     public function set(
         string $email,
         string $passwordHash,
         string $firstName,
         string $lastName,
         int $roleId,
-        string $last_login_time = null,
-        string $last_login_data = null,
-        string $last_session_time = null,
-        string $registration_code_id = null
+        string $lastLoginTime = null,
+        string $lastLoginData = null,
+        string $lastSessionTime = null,
+        string $registrationCodeId = null,
+        string $status = "active",
+        string $timeZone = null,
+        int $failedLogins = 0,
+        string $suspendStart = null,
+        bool $locked = false,
+        string $registrationType = ""
     ) {
         $this->email = $email;
         $this->password_hash = $passwordHash;
         $this->first_name = $firstName;
         $this->last_name = $lastName;
         $this->role_id = $roleId;
-        $this->last_login_time = $last_login_time;
-        $this->last_login_data = $last_login_data;
-        $this->last_session_time = $last_session_time;
-        $this->registration_code_id = $registration_code_id;
+        $this->last_login_time = $lastLoginTime;
+        $this->last_login_data = $lastLoginData;
+        $this->last_session_time = $lastSessionTime;
+        $this->registration_code_id = $registrationCodeId;
+        $this->status = $status;
+        $this->time_zone = $timeZone;
+        $this->failed_logins = $failedLogins;
+        $this->suspend_start = $suspendStart;
+        $this->setLocked($locked);
+        $this->registration_type = $registrationType;
     }
 
     public function getRole(): string

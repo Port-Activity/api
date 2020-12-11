@@ -5,16 +5,13 @@ services:
   postgres:
     image: postgres:alpine
     container_name: spia-postgres-integration
-    env_file: ../.env
 
   redis:
     image: redis:alpine
     container_name: spia-redis-integration
 
   api:
-    build:
-      context: ..
-      dockerfile: Dockerfile
+    image: nginx:alpine
     stop_signal: SIGINT
     depends_on:
       - postgres
@@ -22,15 +19,18 @@ services:
     volumes:
       - ..:/code:rw,consistent
       - ../nginx/default.conf:/etc/nginx/conf.d/default.conf:rw,consistent
-    ports:
-      - "8001:80"
     links:
       - php
     container_name: spia-api-integration
 
   php:
+    env_file:
+      - features.env
+    environment:
+      - SKIP_LOCAL_INIT=1
     build:
       context: ..
       dockerfile: Dockerfile
     volumes:
       - ..:/code:rw,consistent
+    container_name: spia-integration-php

@@ -7,6 +7,7 @@ use SMA\PAA\ORM\TimestampStateRepository;
 use SMA\PAA\ORM\TimestampTimeTypeRepository;
 use SMA\PAA\ORM\UserModel;
 use SMA\PAA\ORM\UserRepository;
+use SMA\PAA\ORM\TimestampModel;
 use SMA\PAA\SERVICE\UserService;
 use SMA\PAA\Session;
 
@@ -103,6 +104,21 @@ class ApiKeyService implements IApiKeyService
             if ($apiKeyModel !== null) {
                 $apiKeyId = $apiKeyModel->id;
             }
+        }
+
+        return $apiKeyId;
+    }
+    public function getApiKeyIdFromTimestamp(TimestampModel $timestampModel): ?int
+    {
+        $apiKeyId = null;
+
+        $apiKeyRepository = new ApiKeyRepository();
+        $query = [];
+        $query["bound_user_id"] = $timestampModel->created_by;
+        $apiKeyModel = $apiKeyRepository->first($query);
+
+        if ($apiKeyModel !== null) {
+            $apiKeyId = $apiKeyModel->id;
         }
 
         return $apiKeyId;

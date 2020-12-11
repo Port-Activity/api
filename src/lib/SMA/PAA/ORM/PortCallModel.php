@@ -6,7 +6,8 @@ class PortCallModel extends OrmModel
     const STATUS_ARRIVING       = "arriving"; // eta ata etd
     const STATUS_AT_BERTH       = "at berth"; // ops etd
     const STATUS_DEPARTING      = "departing";
-    const STATUS_DEPARTED       = "departed"; // atd
+    const STATUS_DEPARTED_BERTH = "departed berth"; // atd berth
+    const STATUS_DEPARTED       = "departed"; // atd port area
     const STATUS_DONE           = "done";     // no more on timeline
 
     const NEXT_EVENT_ETA        = "ETA";

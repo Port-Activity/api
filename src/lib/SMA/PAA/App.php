@@ -3,15 +3,23 @@ namespace SMA\PAA;
 
 use ReflectionMethod;
 use Exception;
+use SMA\PAA\SERVICE\AuthService;
 use SMA\PAA\TOOL\PermissionTools;
+use SMA\PAA\SERVICE\StateService;
+use SMA\PAA\SERVICE\IStateService;
 
 class App
 {
     private $server;
 
-    public function __construct(Server $server)
+    public function __construct(Server $server, IStateService $stateService = null)
     {
         $this->server = $server;
+
+        if ($stateService === null) {
+            $stateService = new StateService();
+        }
+        $stateService->rebuildInitialSharedData();
     }
     public function setAliases(array $aliases)
     {
@@ -118,6 +126,6 @@ class App
                 return call_user_func_array([$object, $method], $parameters);
             }
         }
-        throw new AuthenticationException("Invalid access");
+        AuthService::handleInvalidAccess();
     }
 }

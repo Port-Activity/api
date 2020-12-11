@@ -6,6 +6,7 @@ class VesselModel extends OrmModel
     public $imo;
     public $vessel_name;
     public $visible = "t";
+    public $vessel_type;
 
     public function __construct()
     {
@@ -25,10 +26,12 @@ class VesselModel extends OrmModel
     public function set(
         int $imo,
         string $vesselName,
-        bool $visible = true
+        bool $visible = true,
+        int $vesselType = 1
     ) {
         $this->imo = $imo;
         $this->vessel_name = $vesselName;
         $this->setIsVisible($visible);
+        $this->vessel_type = $vesselType;
     }
 }

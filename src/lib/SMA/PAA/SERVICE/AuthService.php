@@ -2,6 +2,7 @@
 
 namespace SMA\PAA\SERVICE;
 
+use SMA\PAA\AuthenticationException;
 use SMA\PAA\InvalidParameterException;
 use SMA\PAA\ORM\UserRepository;
 use SMA\PAA\Session;
@@ -12,6 +13,7 @@ use SMA\PAA\TOOL\EmailTools;
 use SMA\PAA\ORM\SettingRepository;
 use SMA\PAA\ORM\RolePermissionRepository;
 use SMA\PAA\TOOL\PasswordTools;
+use SMA\PAA\TOOL\PasswordRules;
 
 class AuthService
 {
@@ -21,16 +23,47 @@ class AuthService
 
         $user = $repository->getWithEmail($email);
         if ($user) {
+            $userService = new UserService();
+
+            if ($user->getLocked()) {
+                return ["message" => "Too many failed login attempts. Account locked."];
+            }
+
+            $passwordRules = new PasswordRules();
+            $suspendMinutes = $passwordRules->getSuspendMinutes($user->getRole());
+            if ($userService->isUserSuspended($user->id)) {
+                return [
+                    "message" =>
+                    "Too many failed login attempts. Account suspended for " . $suspendMinutes . " minute(s)."
+                ];
+            }
+
             if ($this->verify($password, $user->password_hash)) {
+                $userService->updateUserSuccessfulLogin($user->id);
+
                 session_destroy();
                 $session = new Session();
                 $session->startWithUser($user);
                 return array_merge([
                     "session_id" => session_id()
                 ], $this->session());
+            } else {
+                $userService->updateUserFailedLogin($user->id);
+
+                $failedUser = $repository->get($user->id);
+                if ($failedUser !== null) {
+                    if ($failedUser->getLocked()) {
+                        return ["message" => "Too many failed login attempts. Account locked."];
+                    } elseif ($userService->isUserSuspended($failedUser->id)) {
+                        return [
+                            "message" =>
+                            "Too many failed login attempts. Account suspended for " . $suspendMinutes . " minute(s)."
+                        ];
+                    }
+                }
             }
         }
-        return ["message" => "authentication failed"];
+        self::handleInvalidAccess();
     }
     public function logout()
     {
@@ -64,7 +97,12 @@ class AuthService
 
         $settingRepository = new SettingRepository();
 
-        $all_modules = array("activity_module", "logistics_module", "queue_module", "map_module");
+        $all_modules = array(
+            "activity_module",
+            "logistics_module",
+            "queue_module",
+            "map_module",
+            "codeless_registration_module");
         foreach ($all_modules as $module) {
             $settingModel = $settingRepository->getSetting($module);
             $modules[$module] = ($settingModel === null) ? "disabled" : $settingModel->value;
@@ -181,17 +219,18 @@ class AuthService
             return ["message" => "Invalid token, you must request new one."];
         }
 
-        $tools = new PasswordTools();
-        $tools->checkPasswordIsOk($data['email'], $password);
-
         if ($data && $data['email']) {
             // Token not expired, set password
             $userRepository = new UserRepository();
             $user = $userRepository->getWithEmail($data['email']);
+
             if ($user) {
+                $tools = new PasswordTools();
+                $tools->checkPasswordIsOk($data['email'], $password, $user->getRole());
+
                 $userService = new UserService();
 
-                return $userService->updateUser(
+                $res = $userService->updateUser(
                     $user->id,
                     $user->email,
                     $user->first_name,
@@ -201,6 +240,10 @@ class AuthService
                     false,
                     true
                 );
+
+                $userService->updateUserSuccessfulLogin($user->id);
+
+                return $res;
             }
         }
         return ["message" => "Password reset failed, please try again"];
@@ -223,7 +266,7 @@ class AuthService
         }
 
         $tools = new PasswordTools();
-        $tools->checkPasswordIsOk($user->email, $password);
+        $tools->checkPasswordIsOk($user->email, $password, $user->getRole());
 
         $service = new UserService();
         $service->updateUser(
@@ -234,5 +277,10 @@ class AuthService
             $password
         );
         return true;
+    }
+    public static function handleInvalidAccess()
+    {
+        usleep(rand(0, 2000) * 1000);
+        throw new AuthenticationException("Invalid access");
     }
 }

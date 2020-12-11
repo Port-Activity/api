@@ -309,6 +309,26 @@ spec:
               secretKeyRef:
                 name: api
                 key: PORT_CALL_MASTER_END_BUFFER_DURATION
+          - name: MAP_MARKERS
+            valueFrom:
+              secretKeyRef:
+                name: api
+                key: MAP_MARKERS
+          - name: PORT_CALL_DEPARTED_STATES
+            valueFrom:
+              secretKeyRef:
+                name: api
+                key: PORT_CALL_DEPARTED_STATES
+          - name: MAP_VESSEL_LOCATION_MAX_AGE_MINUTES
+            valueFrom:
+              secretKeyRef:
+                name: api
+                key: MAP_VESSEL_LOCATION_MAX_AGE_MINUTES
+          - name: PASSWORD_RULES
+            valueFrom:
+              secretKeyRef:
+                name: api
+                key: PASSWORD_RULES
         image: ${CICD_REGISTRY}/php:${CICD_EXECUTION_SEQUENCE}-${CICD_GIT_COMMIT}
         ports:
         - containerPort: 9000

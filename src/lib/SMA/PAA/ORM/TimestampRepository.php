@@ -148,7 +148,7 @@ class TimestampRepository extends OrmRepository
         }
 
         if (isset($portCallId)) {
-            $query["portCallId"] = $portCallId;
+            $query["port_call_id"] = $portCallId;
         }
 
         if (isset($startDateTime)) {

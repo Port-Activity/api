@@ -6,7 +6,7 @@ use SMA\PAA\ORM\TimestampApiKeyWeightRepository;
 use SMA\PAA\ORM\TimestampApiKeyWeightModel;
 use SMA\PAA\ORM\TimestampModel;
 use SMA\PAA\ORM\ApiKeyRepository;
-use SMA\PAA\ORM\ApikeyModel;
+use SMA\PAA\ORM\ApiKeyModel;
 use SMA\PAA\ORM\TimestampTimeTypeRepository;
 use SMA\PAA\ORM\TimestampStateRepository;
 use SMA\PAA\SERVICE\ApiKeyService;

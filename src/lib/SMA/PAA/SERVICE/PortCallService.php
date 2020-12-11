@@ -13,11 +13,17 @@ use SMA\PAA\ORM\VisVoyagePlanRepository;
 use SMA\PAA\ORM\TimestampModel;
 use SMA\PAA\ORM\TimestampPrettyModel;
 use SMA\PAA\ORM\SlotReservationRepository;
+use SMA\PAA\ORM\PortCallPayloadKeyWeightRepository;
+use SMA\PAA\ORM\PayloadKeyApiKeyWeightRepository;
+use SMA\PAA\ORM\DecisionRepository;
 use SMA\PAA\Session;
 use SMA\PAA\TOOL\DateTools;
 use SMA\PAA\CURL\CurlRequest;
 use SMA\PAA\TOOL\TimestampClusterTools;
 use SMA\PAA\TOOL\OutboundVesselTools;
+use SMA\PAA\TOOL\PortCallResolveTools;
+use SMA\PAA\SERVICE\ApiKeyService;
+use SMA\PAA\ORM\VesselTypeRepository;
 
 class PortCallService
 {
@@ -76,6 +82,7 @@ class PortCallService
             ,"status"
             ,"vessel_name"
             ,"imo"
+            ,"mmsi"
             ,"nationality"
             ,"from_port"
             ,"to_port"
@@ -96,15 +103,22 @@ class PortCallService
             ,"cargo_operations_status"
             ,"berth"
             ,"berth_name"
+            ,"vessel_type_name"
+            ,"master_id"
         ];
 
         $out = array_reduce($ensureValues, function ($acc, $key) use ($model) {
             $acc[$key] = isset($model->$key) ? $model->$key : "";
             return $acc;
         }, []);
+        $out["mmsi"] = $out["mmsi"] ? $out["mmsi"] : null;
         $out["badges"] = [];
         if ($model->status) {
-            $out["badges"][] = ["type" => "success", "value" => $model->status];
+            $statusValue = $model->status;
+            if ($model->status === "departed berth") {
+                $statusValue = "departed";
+            }
+            $out["badges"][] = ["type" => "success", "value" => $statusValue];
         }
         if ($model->berth_name) {
             $out["badges"][] = ["type" => "default", "value" => $model->berth_name];
@@ -135,6 +149,12 @@ class PortCallService
             "title" => $model->next_event_title,
             "ts" => $model->next_event_ts ? $dateTools->isoDate($model->next_event_ts) : null
         ];
+
+        $vesselRepository = new VesselRepository();
+        $vesselModel = $vesselRepository->first(["imo" => $model->imo]);
+        $vesselTypeRepository = new VesselTypeRepository();
+        $vesselTypeName = $vesselTypeRepository->getVesselTypeName($vesselModel->vessel_type);
+        $out["vessel_type_name"] = isset($vesselTypeName) ? $vesselTypeName : "";
 
         // fill vis data
         if ($model->getIsVis()) {
@@ -177,6 +197,14 @@ class PortCallService
         }
 
         return $out;
+    }
+
+    private function closePortCallDecisions(PortCallModel $model)
+    {
+        if (!empty($model->master_id)) {
+            $decisionRepository = new DecisionRepository();
+            $decisionRepository->closeDecisionsWithPortCallMasterId($model->master_id);
+        }
     }
 
     public function portCallTimelineObject(int $id)
@@ -322,7 +350,17 @@ class PortCallService
             }
 
             if ($heavier) {
-                $factoryTimestamps[] = $timestamp;
+                // Fix for wrong ATD timestamps, filter out ATD berth if not actually departed
+                if ($timeType === PortCallHelperModel::TYPE_Actual &&
+                    $state === PortCallHelperModel::STATE_Departure_Vessel_Berth) {
+                    if ($model->status === PortCallModel::STATUS_DEPARTED_BERTH ||
+                        $model->status === PortCallModel::STATUS_DEPARTED ||
+                        $model->status === PortCallModel::STATUS_DONE) {
+                        $factoryTimestamps[] = $timestamp;
+                    }
+                } else {
+                    $factoryTimestamps[] = $timestamp;
+                }
             }
         }
 
@@ -366,6 +404,7 @@ class PortCallService
         return array_map(function (PortCallModel $model) {
             return [
                 "imo" => $model->imo,
+                "mmsi" => $model->mmsi,
                 "state" => $model->status,
                 "current_eta" => $model->current_eta
             ];
@@ -462,6 +501,7 @@ class PortCallService
             if ($tools->differenceSeconds($model->atd, $tools->now()) >= 60 * $offsetMinutes) {
                 $model->status = PortCallModel::STATUS_DONE;
                 $repository->save($model);
+                $this->closePortCallDecisions($model);
                 $changes[] = ["port_call_id" => $model->id, "imo" => $model->imo ];
             }
         }
@@ -480,6 +520,7 @@ class PortCallService
             if ($age >= $offsetMinutes * 60 || $forceClose) {
                 $portCallModel->status = PortCallModel::STATUS_DONE;
                 $portCallRepository->save($portCallModel);
+                $this->closePortCallDecisions($portCallModel);
             }
         }
     }
@@ -571,6 +612,7 @@ class PortCallService
         $at_berth = false;
         $departing = false;
         $departed = false;
+        $departedBerth = false;
         $weightMap = [];
         $weightMap[] = [];
         foreach ($timestamps as $timestamp) {
@@ -621,9 +663,16 @@ class PortCallService
 
                 if ($helperModel->isAtBerth()) {
                     $at_berth = true;
+                    $departedBerth = false;
                 } elseif ($helperModel->isDeparting()) {
                     $departing = true;
-                } elseif ($helperModel->hasDeparted()) {
+                    $departedBerth = false;
+                } elseif ($helperModel->hasDepartedBerth()) {
+                    $departedBerth = true;
+                }
+
+                // Departed berth and departed can be same state
+                if ($helperModel->hasDeparted()) {
                     $departed = true;
                     if (empty($fallback_atd)) {
                         $fallback_atd = $helperModel->time();
@@ -653,12 +702,33 @@ class PortCallService
                 "laytime" => "laytime"
             ];
 
+            $portCallPayloadKeyWeightRepository = new PortCallPayloadKeyWeightRepository();
+            $payloadKeyApiKeyWeightRepository = new PayloadKeyApiKeyWeightRepository();
+            $apiKeyService = new ApiKeyService();
+            $apiKeyId = $apiKeyService->getApiKeyIdFromTimestamp($timestamp);
+
             foreach ($payloadMapping as $k => $v) {
-                if ($heavier) {
-                    $portCallModel->$v = $helperModel->payload($k) ?: $portCallModel->$v;
-                } else {
-                    if (empty($portCallModel->$v)) {
-                        $portCallModel->$v = $helperModel->payload($k) ?: $portCallModel->$v;
+                if ($helperModel->payload($k) !== null) {
+                    $currentPayloadKeyWeight = $portCallPayloadKeyWeightRepository->getWeight($portCallModel->id, $k);
+                    if ($apiKeyId !== null) {
+                        $newPayloadKeyWeight = $payloadKeyApiKeyWeightRepository->getApiKeyWeight($k, $apiKeyId);
+                    } else {
+                        $newPayloadKeyWeight = PayloadKeyApiKeyWeightRepository::MAX_PAYLOAD_KEY_WEIGHT;
+                    }
+
+                    $payloadKeyHeavier = false;
+                    if ($newPayloadKeyWeight >= $currentPayloadKeyWeight) {
+                        $payloadKeyHeavier = true;
+                    }
+
+                    if (($heavier &&
+                        $payloadKeyHeavier) ||
+                        (!$heavier &&
+                        empty($portCallModel->$v) &&
+                        $payloadKeyHeavier)
+                    ) {
+                        $portCallModel->$v = $helperModel->payload($k);
+                        $portCallPayloadKeyWeightRepository->setWeight($portCallModel->id, $k, $newPayloadKeyWeight);
                     }
                 }
             }
@@ -680,6 +750,10 @@ class PortCallService
                 }
             }
             $portCallModel->status = PortCallModel::STATUS_DEPARTED;
+            $portCallModel->next_event_title = PortCallModel::NEXT_EVENT_ATD;
+            $portCallModel->next_event_ts = $portCallModel->atd;
+        } elseif ($departedBerth) {
+            $portCallModel->status = PortCallModel::STATUS_DEPARTED_BERTH;
             $portCallModel->next_event_title = PortCallModel::NEXT_EVENT_ATD;
             $portCallModel->next_event_ts = $portCallModel->atd;
         } elseif ($departing) {
@@ -774,7 +848,7 @@ class PortCallService
                 $portCallModel->status = PortCallModel::STATUS_ARRIVING;
                 $portCallModel->first_eta = $timestamp->time;
                 $portCallModel->current_eta = $timestamp->time;
-                $portCallId = $portCallRepository->save($portCallModel);
+                $portCallId = $portCallRepository->save($portCallModel, false, false);
                 $portCallIds[] = $portCallId;
             }
 
@@ -1004,7 +1078,7 @@ class PortCallService
                 $portCallModel->first_eta = $timestamp->time;
                 $portCallModel->current_eta = $timestamp->time;
 
-                $portCallId = $portCallRepository->save($portCallModel);
+                $portCallId = $portCallRepository->save($portCallModel, false, false);
                 $portCallsInClusters[$clusterId][] = $portCallId;
             }
 
@@ -1056,17 +1130,41 @@ class PortCallService
         $orphanTimestamps = $timestampRepository->list($query, 0, 1000);
 
         $dateTools = new DateTools();
+        $portCallResolveTools = new PortCallResolveTools();
 
         $modifiedPortCallIds = [];
         foreach ($orphanTimestamps as $orphanTimestamp) {
-            $query = [];
-            $query["imo"] = $imo;
-            $startTime = $dateTools->addIsoDuration($orphanTimestamp->time, $this->masterStartBufferDuration);
-            $endTime = $dateTools->subIsoDuration($orphanTimestamp->time, $this->masterEndBufferDuration);
-            $query["master_start"] = ["lte" => $startTime];
-            $query["master_end"] = ["gte" => $endTime];
-            $portCallModel = $portCallRepository->first($query, "master_end DESC");
+            // Find port call to attach to
+            // For master timestamps try to attach to port call with correct master ID
+            // Otherwise try to attach to latest port calls that have suitable range
+            $portCallModel = null;
+            if ($this->isMasterTimestamp($orphanTimestamp)) {
+                $payload = json_decode($orphanTimestamp->payload, true);
+                $query = [];
+                $query["imo"] = $imo;
+                $query["master_id"] = $payload["external_id"];
 
+                $portCallModel = $portCallRepository->first($query, "master_end DESC");
+            }
+            if ($portCallModel === null) {
+                $query = [];
+                $query["imo"] = $imo;
+                $startTime = $dateTools->addIsoDuration($orphanTimestamp->time, $this->masterStartBufferDuration);
+                $endTime = $dateTools->subIsoDuration($orphanTimestamp->time, $this->masterEndBufferDuration);
+                $query["master_start"] = ["lte" => $startTime];
+                $query["master_end"] = ["gte" => $endTime];
+
+                $portCallModels = $portCallRepository->list($query, 0, 1000, "master_end DESC");
+
+                // If there are multiple possible port calls then resolve
+                // using timestamp and port call states
+                if (count($portCallModels) === 1) {
+                    $portCallModel = reset($portCallModels);
+                } elseif (count($portCallModels) > 1) {
+                    $portCallModel =
+                        $portCallResolveTools->resolvePortCallForTimestamp($orphanTimestamp, $portCallModels);
+                }
+            }
             if ($portCallModel !== null) {
                 $portCallId = $portCallModel->id;
                 if ($this->timestampToPortCall($orphanTimestamp->id, $portCallId, $isFromAgent, $ignoreStatus)) {
@@ -1084,40 +1182,64 @@ class PortCallService
         return ["result" => "OK"];
     }
 
-    public function parseMasterData(TimestampModel $timestampModel)
+    private function isMasterTimestamp(TimestampModel $timestampModel): bool
     {
         if (empty($this->masterSource)) {
-            return;
+            return false;
         }
 
         if (empty($timestampModel->payload)) {
-            return;
+            return false;
         }
         $payload = json_decode($timestampModel->payload, true);
 
         if (empty($payload["source"])) {
-            return;
+            return false;
         }
 
         if (empty($payload["external_id"])) {
-            return;
+            return false;
         }
 
         $source = $payload["source"];
-        if (!in_array($source, $this->masterSource)) {
+        if (!in_array($source, $this->masterSource) && $source !== "jit_eta_form") {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function parseMasterData(TimestampModel $timestampModel)
+    {
+        if (!$this->isMasterTimestamp($timestampModel)) {
             return;
         }
+
+        $payload = json_decode($timestampModel->payload, true);
+        $source = $payload["source"];
 
         $timestampPrettyModel = new TimestampPrettyModel();
         $timestampPrettyModel->setFromTimestamp($timestampModel);
 
-        if ($timestampPrettyModel->time_type !== "Estimated") {
-            return;
-        }
-
-        if ($timestampPrettyModel->state !== "Arrival_Vessel_PortArea" &&
-            $timestampPrettyModel->state !== "Departure_Vessel_Berth") {
-            return;
+        if ($source === "jit_eta_form") {
+            if ($timestampPrettyModel->time_type !== "Estimated" &&
+                $timestampPrettyModel->time_type !== "Planned") {
+                return;
+            }
+            if ($timestampPrettyModel->state !== "Arrival_Vessel_PortArea" &&
+                $timestampPrettyModel->state !== "Departure_Vessel_Berth") {
+                return;
+            }
+        } else {
+            if ($timestampPrettyModel->time_type !== "Estimated" &&
+                $timestampPrettyModel->time_type !== "Actual") {
+                return;
+            }
+            if ($timestampPrettyModel->state !== "Arrival_Vessel_PortArea" &&
+                $timestampPrettyModel->state !== "Arrival_Vessel_Berth" &&
+                $timestampPrettyModel->state !== "Departure_Vessel_Berth") {
+                return;
+            }
         }
 
         $masterId = $payload["external_id"];
@@ -1131,25 +1253,36 @@ class PortCallService
         $portCallModel = $portCallRepository->first($query, "id DESC");
 
         // If no matching master ID, check if timestamp fits within existing masterless port call
+        // or if it fits to JIT ETA locked port call
         // If fits, do nothing, since timestamp can be associated to existing port call
-        // This can happen if there are clustered port calls
+        // This can happen if there are clustered port calls or if JIT ETA is in use
+        // If timestamp fits to existing port call with master but source is JIT ETA
+        // then change the master source to JIT ETA
         $dateTools = new DateTools();
         if ($portCallModel === null) {
             $query = [];
             $query["imo"] = $timestampModel->imo;
             $startTime = $dateTools->addIsoDuration($timestampModel->time, $this->masterStartBufferDuration);
             $endTime = $dateTools->subIsoDuration($timestampModel->time, $this->masterEndBufferDuration);
-            $query["master_id"] = null;
             $query["master_start"] = ["lte" => $startTime];
             $query["master_end"] = ["gte" => $endTime];
             $portCallModel = $portCallRepository->first($query);
 
             if ($portCallModel !== null) {
-                return;
+                if ($source === "jit_eta_form") {
+                    $portCallModel->master_id = $masterId;
+                } else {
+                    if ($portCallModel->master_id === null) {
+                        return;
+                    } elseif (strpos($portCallModel->master_id, "slot_reservation_id") === 0) {
+                        return;
+                    }
+                }
             }
         }
 
         // Open new port call
+        $invalidateCache = true;
         if ($portCallModel === null) {
             $portCallModel = new PortCallModel();
             $portCallModel->imo = $timestampPrettyModel->imo;
@@ -1157,19 +1290,21 @@ class PortCallService
             $portCallModel->first_eta = $timestampPrettyModel->time;
             $portCallModel->current_eta = $timestampPrettyModel->time;
             $portCallModel->master_id = $masterId;
+            $invalidateCache = false;
         }
 
         // Update master start or end times depending on state
         // if port call range is not manually changed
         if (!$portCallModel->getMasterManual()) {
-            if ($timestampPrettyModel->state === "Arrival_Vessel_PortArea") {
+            if ($timestampPrettyModel->state === "Arrival_Vessel_PortArea" ||
+                $timestampPrettyModel->state === "Arrival_Vessel_Berth") {
                 $portCallModel->master_start = $timestampPrettyModel->time;
             } elseif ($timestampPrettyModel->state === "Departure_Vessel_Berth") {
                 $portCallModel->master_end = $timestampPrettyModel->time;
             }
         }
 
-        $portCallRepository->save($portCallModel);
+        $portCallRepository->save($portCallModel, false, $invalidateCache);
     }
 
     public function getPortCallRange(int $port_call_id)
@@ -1224,7 +1359,7 @@ class PortCallService
         $portCallModel->master_start = $start;
         $portCallModel->master_end = $end;
         $portCallModel->setMasterManual(true);
-        $portCallRepository->save($portCallModel);
+        $portCallRepository->save($portCallModel, false, false);
 
         $modifiedPortCallIds = [];
         $modifiedPortCallIds[] = $port_call_id;

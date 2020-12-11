@@ -10,6 +10,7 @@ use SMA\PAA\ORM\SettingRepository;
 use SMA\PAA\ORM\BerthRepository;
 use SMA\PAA\SERVICE\EmailService;
 use SMA\PAA\SERVICE\SlotReservationService;
+use SMA\PAA\SERVICE\TranslationService;
 
 class BerthReservationRepository extends OrmRepository
 {
@@ -41,6 +42,8 @@ class BerthReservationRepository extends OrmRepository
 
     private function sendBerthBlockShiftEmail(BerthReservationModel $model)
     {
+        $t = new TranslationService();
+
         $berthRepository = new BerthRepository();
         $berthModel = $berthRepository->get($model->berth_id);
 
@@ -52,9 +55,15 @@ class BerthReservationRepository extends OrmRepository
         }
 
         $dateTools = new DateTools();
-        $subject = "Berth " . $berthCode . " block #" . $model->id . " shifted";
-        $heading1 = "Berth " . $berthName . " block #" . $model->id . " has been shifted due to laytime change";
-        $heading2 = "New berth block time";
+        $subject =
+            $t->t("[EMAIL BERTH BLOCK] Berth") . " " . $berthCode .
+            " " . $t->t("[EMAIL BERTH BLOCK] block") . " #" . $model->id .
+            " " . $t->t("[EMAIL BERTH BLOCK] shifted");
+        $heading1 =
+            "Berth " . $berthName .
+            " " . $t->t("[EMAIL BERTH BLOCK] block") . " #" . $model->id .
+            " " . $t->t("[EMAIL BERTH BLOCK] has been shifted due to laytime change");
+        $heading2 = $t->t("[EMAIL BERTH BLOCK] New berth block time");
         $paragraph = $dateTools->isoDate($model->reservation_start, $this->portTimeZone)
                      . " - "
                      . $dateTools->isoDate($model->reservation_end, $this->portTimeZone);

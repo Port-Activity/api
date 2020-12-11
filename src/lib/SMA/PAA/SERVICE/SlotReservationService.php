@@ -28,6 +28,7 @@ use SMA\PAA\SERVICE\JwtService;
 use SMA\PAA\SERVICE\EmailService;
 use SMA\PAA\SERVICE\PortCallService;
 use SMA\PAA\SERVICE\TimestampApiKeyWeightService;
+use SMA\PAA\SERVICE\TranslationService;
 
 class SlotReservationService implements ISlotReservationService
 {
@@ -67,6 +68,8 @@ class SlotReservationService implements ISlotReservationService
         string $token,
         string $expiryDate
     ): array {
+        $t = new TranslationService();
+
         $res = [];
         $subject = "";
         $textBody = "";
@@ -74,42 +77,44 @@ class SlotReservationService implements ISlotReservationService
         $formUrl = $this->jitEtaFormUrl;
         $link = $formUrl . "?token=" . $token;
 
-        $subject = "Slot request #" . $model->id . " ";
+        $subject = $t->t("[EMAIL SLOT REQUEST] Slot request") . " #" . $model->id . " ";
         if ($model->slot_reservation_status_id === SlotReservationStatusModel::id("offered")) {
-            $subject .= "offer";
+            $subject .= $t->t("[EMAIL SLOT REQUEST] offer");
         } elseif ($model->slot_reservation_status_id === SlotReservationStatusModel::id("accepted")) {
-            $subject .= "confirmation";
+            $subject .= $t->t("[EMAIL SLOT REQUEST] confirmation");
         } elseif ($model->slot_reservation_status_id === SlotReservationStatusModel::id("no_nomination")) {
-            $subject .= "nomination not found";
+            $subject .= $t->t("[EMAIL SLOT REQUEST] nomination not found");
         } elseif ($model->slot_reservation_status_id === SlotReservationStatusModel::id("no_free_slot")) {
-            $subject .= "free slot not available";
+            $subject .= $t->t("[EMAIL SLOT REQUEST] free slot not available");
         } elseif ($model->slot_reservation_status_id === SlotReservationStatusModel::id("updated")) {
-            $subject .= "updated by port";
+            $subject .= $t->t("[EMAIL SLOT REQUEST] updated by port");
         } elseif ($model->slot_reservation_status_id === SlotReservationStatusModel::id("cancelled_by_vessel")) {
-            $subject .= "cancellation confirmation";
+            $subject .= $t->t("[EMAIL SLOT REQUEST] cancellation confirmation");
         } elseif ($model->slot_reservation_status_id === SlotReservationStatusModel::id("cancelled_by_port")) {
-            $subject .= "cancelled by port";
+            $subject .= $t->t("[EMAIL SLOT REQUEST] cancelled by port");
         }
 
         $heading = "";
         if ($model->slot_reservation_status_id === SlotReservationStatusModel::id("offered")) {
-            $heading = "Please send your JIT ETA to outer port area based on RTA window given by port.";
+            $heading =
+                $t->t("[EMAIL SLOT REQUEST] Please send your JIT ETA " .
+                "to outer port area based on RTA window given by port.");
         } elseif ($model->slot_reservation_status_id === SlotReservationStatusModel::id("accepted")) {
-            $heading = "Your JIT ETA to outer port area has been accepted.";
+            $heading = $t->t("[EMAIL SLOT REQUEST] Your JIT ETA to outer port area has been accepted.");
         } elseif ($model->slot_reservation_status_id === SlotReservationStatusModel::id("no_nomination")) {
-            $heading = "Port is unable to find nomination for your slot request.";
+            $heading = $t->t("[EMAIL SLOT REQUEST] Port is unable to find nomination for your slot request.");
         } elseif ($model->slot_reservation_status_id === SlotReservationStatusModel::id("no_free_slot")) {
-            $heading = "Port is unable to find free slot for your request.";
+            $heading = $t->t("[EMAIL SLOT REQUEST] Port is unable to find free slot for your request.");
         } elseif ($model->slot_reservation_status_id === SlotReservationStatusModel::id("updated")) {
-            $heading = "Port has updated your JIT ETA.";
+            $heading = $t->t("[EMAIL SLOT REQUEST] Port has updated your JIT ETA.");
         } elseif ($model->slot_reservation_status_id === SlotReservationStatusModel::id("cancelled_by_vessel")) {
-            $heading = "Your slot request has been cancelled by your request.";
+            $heading = $t->t("[EMAIL SLOT REQUEST] Your slot request has been cancelled by your request.");
         } elseif ($model->slot_reservation_status_id === SlotReservationStatusModel::id("cancelled_by_port")) {
-            $heading = "Your slot request has been cancelled by port.";
+            $heading = $t->t("[EMAIL SLOT REQUEST] Your slot request has been cancelled by port.");
         }
 
-        $paragraph = "To view and update your slot request please use the link below.";
-        $expiry = "This link is valid until: " . $expiryDate;
+        $paragraph = $t->t("[EMAIL SLOT REQUEST] To view and update your slot request please use the link below.");
+        $expiry = $t->t("[EMAIL SLOT REQUEST] This link is valid until:") . " " . $expiryDate;
 
         $textBody =
             $heading . "\n\n" .
@@ -121,7 +126,9 @@ class SlotReservationService implements ISlotReservationService
             "<h2>" . $heading . "</h2>" .
             "<p>" . $paragraph . "</p>" .
             "<p>" . $expiry . "</p>" .
-            "<a href=\"" . $link . "\">Slot request #" . $model->id . "</a>";
+            "<a href=\"" . $link . "\">" .
+            $t->t("[EMAIL SLOT REQUEST] Slot request") . " #" . $model->id .
+            "</a>";
 
         $res["subject"] = $subject;
         $res["text_body"] = $textBody;
@@ -183,6 +190,7 @@ class SlotReservationService implements ISlotReservationService
 
         $payload = [];
         $payload["source"] = "jit_eta_form";
+        $payload["external_id"] = "slot_reservation_id" . $model->id;
         $payload["slot_reservation_id"] = $model->id;
         $payload["slot_reservation_status"] = SlotReservationStatusModel::name($model->slot_reservation_status_id);
         $payload["rta_window_start"] = $model->rta_window_start;
@@ -204,6 +212,20 @@ class SlotReservationService implements ISlotReservationService
                 "Estimated",
                 "Arrival_Vessel_PortArea",
                 $model->eta,
+                $payload
+            );
+            $timestampModels[] = $timestampModel;
+
+            // We have first ETA and laytime from vessel, so we can store ETD also
+            $etd = $dateTools->addIsoDuration($model->eta, $this->travelDurationToBerth);
+            $etd = $dateTools->addIsoDuration($etd, $model->laytime);
+            $timestampModel = new TimestampModel();
+            $timestampModel->set(
+                $model->imo,
+                $model->vessel_name,
+                "Estimated",
+                "Departure_Vessel_Berth",
+                $etd,
                 $payload
             );
             $timestampModels[] = $timestampModel;
@@ -257,10 +279,88 @@ class SlotReservationService implements ISlotReservationService
                     throw new AuthenticationException("No permission to post given timestamp data");
                 }
                 $timestampRepository->save($timestampModel);
-                $portCallservice = new PortCallService();
-                $portCallservice->timestampsToPortCalls($timestampModel->imo, true);
+                $portCallService = new PortCallService();
+                $portCallService->parseMasterData($timestampModel);
+                $portCallService->timestampsToPortCalls($timestampModel->imo, true);
             }
         }
+    }
+
+    private function removeTimestamps(SlotReservationModel $model)
+    {
+        $timestampRepository = new TimestampRepository();
+
+        $deleteTimestampIds = [];
+        $nullPortCallTimestampIds = [];
+        $parseMasterTimestampModels = [];
+
+        // Find timestamps to delete and orphan
+        if ($model->port_call_id !== null) {
+            $query = [];
+            $query["imo"] = $model->imo;
+            $query["port_call_id"] = $model->port_call_id;
+
+            $timestampModels = $timestampRepository->list($query, 0, 10000);
+
+            foreach ($timestampModels as $timestampModel) {
+                $deleted = false;
+                if (isset($timestampModel->payload)) {
+                    $payload = json_decode($timestampModel->payload, true);
+                    if (isset($payload["slot_reservation_id"])) {
+                        if ($payload["slot_reservation_id"] === $model->id) {
+                            $deleteTimestampIds[] = $timestampModel->id;
+                            $deleted = true;
+                        }
+                    }
+                }
+
+                if (!$deleted) {
+                    $nullPortCallTimestampIds[] = $timestampModel->id;
+                    $parseMasterTimestampModels[] = $timestampModel;
+                }
+            }
+        }
+
+        // Find rest of timestamps to delete
+        $query = [];
+        $query["imo"] = $model->imo;
+        $query["port_call_id"] = null;
+        $query["payload->>'slot_reservation_id'"] = $model->id;
+        $timestampModels = $timestampRepository->list($query, 0, 10000);
+        foreach ($timestampModels as $timestampModel) {
+            $deleteTimestampIds[] = $timestampModel->id;
+        }
+
+        if (!empty($deleteTimestampIds)) {
+            $timestampRepository->delete($deleteTimestampIds);
+        }
+
+        $timestampRepository->nullPortCallsByIds($nullPortCallTimestampIds);
+
+        // Find port calls to delete
+        $portCallRepository = new PortCallRepository();
+        $portCallModel = null;
+        if ($model->port_call_id !== null) {
+            $portCallModel = $portCallRepository->get($model->port_call_id);
+        } else {
+            $query = [];
+            $query["imo"] = $model->imo;
+            $query["master_id"] = "slot_reservation_id" . $model->id;
+
+            $portCallModel = $portCallRepository->first($query);
+        }
+        if ($portCallModel !== null) {
+            $portCallRepository->deletePortCallById($portCallModel->id);
+        }
+
+        // Parse orphanized timestamps to open port calls with normal master data
+        $portCallService = new PortCallService();
+        foreach ($parseMasterTimestampModels as $parseMasterTimestampModel) {
+            $portCallService->parseMasterData($parseMasterTimestampModel);
+        }
+
+        // Attach orphan timestamps to port calls
+        $portCallService->timestampsToPortCalls($model->imo, false);
     }
 
     private function validateInputs(
@@ -458,7 +558,7 @@ class SlotReservationService implements ISlotReservationService
             // Send mail only if status has changed
             if ($model->slot_reservation_status_id !== SlotReservationStatusModel::id("no_nomination")) {
                 $this->sendMailToVessel($model);
-                $this->addTimestamps($model);
+                $this->addTimestamps($model, true);
             }
         }
     }
@@ -518,7 +618,7 @@ class SlotReservationService implements ISlotReservationService
             // Send mail only if status has changed
             if ($model->slot_reservation_status_id !== SlotReservationStatusModel::id("no_free_slot")) {
                 $this->sendMailToVessel($model);
-                $this->addTimestamps($model);
+                $this->addTimestamps($model, true);
             }
         }
     }
@@ -572,6 +672,8 @@ class SlotReservationService implements ISlotReservationService
 
     private function sendJitEtaAlertMail(SlotReservationModel $model)
     {
+        $t = new TranslationService();
+
         $portCallRepository = new PortCallRepository();
         $portCallModel = $portCallRepository->get($model->port_call_id);
 
@@ -589,10 +691,13 @@ class SlotReservationService implements ISlotReservationService
             $jitEta = $dateTools->isoDate($model->jit_eta, $this->portTimeZone);
         }
 
-        $subject = "Live ETA alert for " . $model->vessel_name;
-        $heading = "Ship " . $model->vessel_name . " (IMO: " . $model->imo . ") JIT ETA differs from Live ETA";
-        $paragraph1 = "JIT ETA: " . $jitEta;
-        $paragraph2 = "Live ETA: " . $liveEta;
+        $subject = $t->t("[EMAIL LIVE ETA ALERT] Live ETA alert for") . " " . $model->vessel_name;
+        $heading =
+            $t->t("[EMAIL LIVE ETA ALERT] Ship") . " " .
+            $model->vessel_name . " (IMO: " . $model->imo . ") " .
+            $t->t("[EMAIL LIVE ETA ALERT] JIT ETA differs from Live ETA");
+        $paragraph1 = $t->t("[EMAIL LIVE ETA ALERT] JIT ETA:") . " " . $jitEta;
+        $paragraph2 = $t->t("[EMAIL LIVE ETA ALERT] Live ETA:") . " " . $liveEta;
 
         $textBody =
             $heading . "\n\n" .
@@ -975,6 +1080,7 @@ class SlotReservationService implements ISlotReservationService
         $repository->save($model);
 
         $this->sendMailToVessel($model);
+        $this->removeTimestamps($model);
 
         if (!$cancel_only) {
             // TODO: Delete slot reservation model

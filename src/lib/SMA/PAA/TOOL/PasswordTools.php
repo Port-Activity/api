@@ -2,10 +2,18 @@
 namespace SMA\PAA\TOOL;
 
 use SMA\PAA\AuthenticationException;
+use SMA\PAA\TOOL\PasswordRules;
 
 class PasswordTools
 {
-    public function checkPasswordIsOk(string $username, string $password)
+    private $passwordRules;
+
+    public function __construct()
+    {
+        $this->passwordRules = new PasswordRules();
+    }
+
+    public function checkPasswordIsOk(string $username, string $password, string $role)
     {
         $username = trim($username);
         $password = trim($password);
@@ -14,14 +22,18 @@ class PasswordTools
             throw new AuthenticationException("Password can't be same as username");
         }
 
-        if (strlen(trim($password)) < 12) {
-            throw new AuthenticationException("Password must be at least 12 characters in length");
+        if (strlen(trim($password)) < $this->passwordRules->getPasswordMinLength($role)) {
+            throw new AuthenticationException(
+                "Password must be at least " .
+                $this->passwordRules->getPasswordMinLength($role) .
+                " characters in length"
+            );
         }
         $tokens = str_split($password);
         sort($tokens);
         $tokens = array_unique($tokens);
 
-        if (sizeof($tokens) < 3) {
+        if (sizeof($tokens) < $this->passwordRules->getPasswordMinUniqueChars($role)) {
             throw new AuthenticationException("Weak password. Not enough unique characters in password.");
         }
 

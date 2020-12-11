@@ -29,7 +29,7 @@ $envs = [
     ,"PORT_CALL_TEMPLATE_GAVLE" =>
         implode(";", explode("\n", file_get_contents(__DIR__ . "/port_call_template_gavle.txt")))
     ,"RTA_POINT_COORDINATES" => "12.345,67.89"
-    ,"VIS_SERVICE_INSTANCE_URN" => 'urn:mrn:stm:service:instance:sma:vis:dummy'
+    ,"VIS_SERVICE_INSTANCE_URN" => 'urn:mrn:stm:service:instance:sma:vis:portofrauma'
     ,"TIMESTAMP_CLUSTER_AGENT_API_URL" => ""
     ,"VIS_PORT_NAME" => "Port of Gävle"
     ,"VIS_PORT_UNLOCODE" => "SEGVX"
@@ -47,6 +47,10 @@ $envs = [
     ,"PORT_CALL_MASTER_SOURCE" => ""
     ,"PORT_CALL_MASTER_START_BUFFER_DURATION" => "PT6H"
     ,"PORT_CALL_MASTER_END_BUFFER_DURATION" => "PT12H"
+    ,"MAP_MARKERS" => file_get_contents(__DIR__ . "/sea_chart_markers_gavle.json")
+    ,"PORT_CALL_DEPARTED_STATES" => ""
+    ,"MAP_VESSEL_LOCATION_MAX_AGE_MINUTES" => 120
+    ,"PASSWORD_RULES" => ""
 ];
 
 foreach ($envs as $k => $v) {

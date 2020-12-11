@@ -50,7 +50,9 @@ class RegistrationCodesService
 
     public function update(string $id, int $enabled, string $role)
     {
-        $permissionTools = new PermissionTools(new Session());
+        $session = new Session();
+        $userId = $session->userId();
+        $permissionTools = new PermissionTools($session);
         if (!$permissionTools->hasRoleManagementPermission($role)) {
             throw new AuthenticationException("No permission to update registration code to given role");
         }
@@ -60,6 +62,18 @@ class RegistrationCodesService
         if (!$registrationCodesModel) {
             throw new InvalidParameterException("Invalid ID");
         }
+
+        $userManagementLevel = $permissionTools->userManagementLevel();
+        if ($userManagementLevel === "all") {
+            // Do nothing
+        } elseif ($userManagementLevel === "own") {
+            if ($userId !== $registrationCodesModel->created_by) {
+                throw new InvalidParameterException("No permission to update given registration code");
+            }
+        } else {
+            throw new InvalidParameterException("No permission to update given registration code");
+        }
+
         $registrationCodesModel->setIsEnabled($enabled);
         $registrationCodesModel->role = $role;
         $id = $repository->save($registrationCodesModel);
@@ -69,13 +83,37 @@ class RegistrationCodesService
 
     public function delete(int $id)
     {
+        $session = new Session();
+        $userId = $session->userId();
+        $permissionTools = new PermissionTools($session);
+
         $repository = new RegistrationCodesRepository();
+        $registrationCodesModel = $repository->get($id);
+        if (!$registrationCodesModel) {
+            throw new InvalidParameterException("Invalid ID");
+        }
+
+        $userManagementLevel = $permissionTools->userManagementLevel();
+        if ($userManagementLevel === "all") {
+            // Do nothing
+        } elseif ($userManagementLevel === "own") {
+            if ($userId !== $registrationCodesModel->created_by) {
+                throw new InvalidParameterException("No permission to update given registration code");
+            }
+        } else {
+            throw new InvalidParameterException("No permission to update given registration code");
+        }
+
         return $repository->delete([$id]);
     }
 
     public function list($limit, $offset, $sort, $search = ""): array
     {
         $res = [];
+
+        $session = new Session();
+        $userId = $session->userId();
+        $permissionTools = new PermissionTools($session);
 
         $query = [];
 
@@ -88,6 +126,15 @@ class RegistrationCodesService
 
         if ($search) {
             $query["description"] = ["ilike" => "%" . $search . "%"];
+        }
+
+        $userManagementLevel = $permissionTools->userManagementLevel();
+        if ($userManagementLevel === "all") {
+            // Do nothing
+        } elseif ($userManagementLevel === "own") {
+            $query["public.registration_codes.created_by"] = $userId;
+        } else {
+            return ["data" => [], "pagination" => ["start" => 0, "limit" => 0, "total" => 0]];
         }
 
         return $repository->listPaginated($query, $offset, $limit, $sort);

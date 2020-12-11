@@ -172,6 +172,7 @@ class OrmRepository
                         if (count($plainSelectFields) === 3) {
                             if (preg_match('/^[a-z_]+$/', $plainSelectFields[2], $match) === 1) {
                                 $fields[] = $plainSelectFields[2];
+                                $fields[] = $this->table . "." . $plainSelectFields[2];
                             }
                         }
                     } else {
@@ -179,6 +180,7 @@ class OrmRepository
                         if (count($plainSelectFields) === 2) {
                             if (preg_match('/^[a-z_]+$/', $plainSelectFields[1], $match) === 1) {
                                 $fields[] = $plainSelectFields[1];
+                                $fields[] = $this->table . "." . $plainSelectFields[1];
                             }
                         }
                     }
@@ -411,6 +413,7 @@ class OrmRepository
         $out = $db->query($sql, ...$args);
         return $out;
     }
+
     public function buildJoinSelect(array $joinParameters)
     {
         $res = "";
@@ -426,9 +429,15 @@ class OrmRepository
 
         $res = $selectFields;
 
+        $aliasCt = 0;
         foreach ($joinParameters as $k => $v) {
             $repository = new OrmRepository($k);
             $foreignTable = $repository->table;
+
+            if ($foreignTable === $table) {
+                $foreignTable = "alias" . $aliasCt;
+                $aliasCt++;
+            }
 
             foreach ($v["values"] as $innerK => $innerV) {
                 if (!empty($innerK)) {
@@ -442,17 +451,26 @@ class OrmRepository
 
         $res .= " FROM " . $table;
 
+        $aliasCt = 0;
         foreach ($joinParameters as $k => $v) {
             $repository = new OrmRepository($k);
             $foreignTable = $repository->table;
+
+            $alias = "";
+            $onTable = $foreignTable;
+            if ($foreignTable === $table) {
+                $alias = "alias" . $aliasCt;
+                $aliasCt++;
+                $onTable = $alias;
+            }
 
             if (count($v["join"]) > 1) {
                 throw new \Exception("Multiple ON conditions not supported!");
             }
 
             foreach ($v["join"] as $innerK => $innerV) {
-                $res .= " LEFT JOIN " . $foreignTable
-                . " ON (" . $table . "." . $innerK . "=" . $foreignTable . "." . $innerV . ")";
+                $res .= " LEFT JOIN " . $foreignTable . " " . $alias
+                . " ON (" . $table . "." . $innerK . "=" . $onTable . "." . $innerV . ")";
             }
         }
 

@@ -24,6 +24,11 @@ class VisTools
     public function callVisAgent(string $call, string $method, array $parameters = [], string $json = ""): string
     {
         $url = getenv("VIS_AGENT_API_URL");
+
+        if (empty($url)) {
+            return "{}";
+        }
+
         $url .= $call;
 
         foreach ($parameters as $key => $value) {

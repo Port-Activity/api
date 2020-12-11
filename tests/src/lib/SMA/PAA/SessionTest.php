@@ -18,7 +18,7 @@ final class SessionTest extends TestCase
         $session = new Session(["user_id" => 111]);
         $this->assertEquals(
             '{"email":null,"first_name":null,"last_name":null,"role_id":null,'
-            . '"registration_code_id":null,"status":"active","id":111,'
+            . '"registration_code_id":null,"status":"active","locked":"f","registration_type":"","id":111,'
             . '"created_at":null,"created_by":null,"modified_at":null,"modified_by":null}',
             json_encode($session->user())
         );

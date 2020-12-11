@@ -10,6 +10,6 @@ class UserRepository extends OrmRepository
 
     public function getWithEmail(string $email): ?UserModel
     {
-        return $this->first(["email" => $email, "status" => "active"]);
+        return $this->first(["email" => ["LOWER" => $email], "status" => "active"]);
     }
 }

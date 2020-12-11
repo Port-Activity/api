@@ -96,6 +96,19 @@ class VesselRepository extends OrmRepository
         return $res->imo;
     }
 
+    public function getVesselName(int $imo): string
+    {
+        $res = $this->first(["imo" => $imo]);
+
+        if (!isset($res)) {
+            throw new InvalidArgumentException(
+                "Invalid IMO: " . $imo
+            );
+        }
+
+        return $res->vessel_name;
+    }
+
     public function getImosWithVisibility(bool $visible): array
     {
         $res = [];

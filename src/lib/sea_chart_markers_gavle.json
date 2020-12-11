@@ -1,0 +1,108 @@
+[
+    {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [17.2, 60.6865]
+        },
+        "properties": {
+          "name": "Port of Gävle",
+          "description": "",
+          "type": "port"
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+                [17.311872, 60.616235],
+                [17.198919, 60.676821],
+                [17.172483, 60.703208],
+                [17.179007, 60.737461],
+                [17.325949, 60.769667],
+                [17.355818, 60.769164],
+                [17.364057, 60.764469],
+                [17.373327, 60.737629],
+                [17.386030, 60.748536],
+                [17.401480, 60.756084],
+                [17.432722, 60.765140],
+                [17.469801, 60.765475],
+                [17.497267, 60.761451],
+                [17.504476, 60.746355],
+                [17.501387, 60.728901],
+                [17.463621, 60.702704],
+                [17.357878, 60.658994],
+                [17.336935, 60.637958],
+                [17.311872, 60.616235]
+            ]
+          ]
+        },
+        "properties": {
+          "name": "Gävle outer port area",
+          "description": "",
+          "type": "outer-port-area"
+        },
+        "style": {
+          "color": "#000000",
+          "opacity": 1.0,
+          "weight": 2,
+          "fillColor": "#8f8c8c",
+          "fillOpacity": 0.3
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [[17.302517, 60.728314], [17.316336, 60.720339]]
+        },
+        "properties": {
+          "name": "Holmudds channel line",
+          "description": "",
+          "type": "channel-line"
+        },
+        "style": {
+          "color": "#000000",
+          "opacity": 1.0,
+          "weight": 2
+        }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [17.222126, 60.693930]
+      },
+      "properties": {
+        "name": "Berth",
+        "description": "",
+        "type": "berth"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [17.403186, 60.699286]
+      },
+      "properties": {
+        "name": "Anchorage",
+        "description": "",
+        "type": "anchorage"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [17.313175, 60.736705]
+      },
+      "properties": {
+        "name": "Port of Bonan",
+        "description": "",
+        "type": "port"
+      }
+  }
+]

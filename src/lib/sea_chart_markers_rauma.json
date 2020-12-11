@@ -1,0 +1,27 @@
+[
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [21.4681, 61.1304]
+        },
+        "properties": {
+          "name": "Port of Rauma",
+          "description": "",
+          "type": "port"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [21.16778, 61.11806]
+        },
+        "properties": {
+          "name": "Rauma VIS synchronization and pilot boarding point",
+          "description": "",
+          "type": "vis-sync-point",
+          "radius": 1852.0
+        }
+      }
+]

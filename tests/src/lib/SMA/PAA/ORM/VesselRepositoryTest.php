@@ -15,18 +15,19 @@ final class VesselRepositoryTest extends TestCase
         $model->id = 123;
         $model->imo = 1234567;
         $model->vessel_name = "Vessel Name";
+        $model->vessel_type = 6;
         $repository->save($model, true);
         $last = $db->lastQuery();
         $this->assertEquals(
             '"UPDATE public.vessel '
-            . 'SET created_at = ?,created_by = ?,modified_at = ?,modified_by = ?,imo = ?,vessel_name = ?,visible = ? '
-            . 'WHERE id=?"',
+            . 'SET created_at = ?,created_by = ?,modified_at = ?,modified_by = ?,imo = ?,vessel_name = ?,'
+            . 'visible = ?,vessel_type = ? WHERE id=?"',
             json_encode(array_shift($last))
         );
         $last[0] = "<date>";
         $last[2] = "<date>";
         $this->assertEquals(
-            '["<date>",null,"<date>",0,1234567,"Vessel Name","t",123]',
+            '["<date>",null,"<date>",0,1234567,"Vessel Name","t",6,123]',
             json_encode($last)
         );
     }
@@ -38,17 +39,18 @@ final class VesselRepositoryTest extends TestCase
         $model = new VesselModel();
         $model->imo = 1234567;
         $model->vessel_name = "Vessel Name";
+        $model->vessel_type = 8;
         $repository->save($model, true);
         $last = $db->lastQuery();
         $this->assertEquals(
-            '"INSERT INTO public.vessel (created_at,created_by,modified_at,modified_by,imo,vessel_name,visible) '
-            . 'VALUES (?,?,?,?,?,?,?)"',
+            '"INSERT INTO public.vessel (created_at,created_by,modified_at,modified_by,imo,vessel_name,'
+            .'visible,vessel_type) VALUES (?,?,?,?,?,?,?,?)"',
             json_encode(array_shift($last))
         );
         $last[0] = "<date>";
         $last[2] = "<date>";
         $this->assertEquals(
-            '["<date>",0,"<date>",0,1234567,"Vessel Name","t"]',
+            '["<date>",0,"<date>",0,1234567,"Vessel Name","t",8]',
             json_encode($last)
         );
     }
@@ -108,18 +110,19 @@ final class VesselRepositoryTest extends TestCase
         $model->id = 123;
         $model->imo = 1234567;
         $model->vessel_name = "Vessel Name";
+        $model->vessel_type = 8;
         $repository->saveValidImo($model, true);
         $last = $db->lastQuery();
         $this->assertEquals(
             '"UPDATE public.vessel '
-            . 'SET created_at = ?,created_by = ?,modified_at = ?,modified_by = ?,imo = ?,vessel_name = ?,visible = ? '
-            . 'WHERE id=?"',
+            . 'SET created_at = ?,created_by = ?,modified_at = ?,modified_by = ?,imo = ?,vessel_name = ?,'
+            . 'visible = ?,vessel_type = ? WHERE id=?"',
             json_encode(array_shift($last))
         );
         $last[0] = "<date>";
         $last[2] = "<date>";
         $this->assertEquals(
-            '["<date>",null,"<date>",0,1234567,"Vessel Name","t",123]',
+            '["<date>",null,"<date>",0,1234567,"Vessel Name","t",8,123]',
             json_encode($last)
         );
     }
@@ -164,14 +167,14 @@ final class VesselRepositoryTest extends TestCase
         $repository->saveValidImo($model, true);
         $last = $db->lastQuery();
         $this->assertEquals(
-            '"INSERT INTO public.vessel (created_at,created_by,modified_at,modified_by,imo,vessel_name,visible) '
-            . 'VALUES (?,?,?,?,?,?,?)"',
+            '"INSERT INTO public.vessel (created_at,created_by,modified_at,modified_by,imo,vessel_name,visible,'
+            . 'vessel_type) VALUES (?,?,?,?,?,?,?,?)"',
             json_encode(array_shift($last))
         );
         $last[0] = "<date>";
         $last[2] = "<date>";
         $this->assertEquals(
-            '["<date>",0,"<date>",0,1234567,"Vessel Name","t"]',
+            '["<date>",0,"<date>",0,1234567,"Vessel Name","t",null]',
             json_encode($last)
         );
     }
@@ -183,18 +186,19 @@ final class VesselRepositoryTest extends TestCase
         $model = new VesselModel();
         $model->imo = 0;
         $model->vessel_name = "Vessel Name";
+        $model->vessel_type = 9;
         $repository->saveFakeImo($model, true);
         $last = $db->lastQuery();
         $this->assertEquals(
             '"UPDATE public.vessel '
-            . 'SET created_at = ?,created_by = ?,modified_at = ?,modified_by = ?,imo = ?,vessel_name = ?,visible = ? '
-            . 'WHERE id=?"',
+            . 'SET created_at = ?,created_by = ?,modified_at = ?,modified_by = ?,imo = ?,vessel_name = ?,visible = ?,'
+            . 'vessel_type = ? WHERE id=?"',
             json_encode(array_shift($last))
         );
         $last[0] = "<date>";
         $last[2] = "<date>";
         $this->assertEquals(
-            '["<date>",0,"<date>",0,7654321,"Vessel Name","t",111]',
+            '["<date>",0,"<date>",0,7654321,"Vessel Name","t",9,111]',
             json_encode($last)
         );
     }
@@ -227,7 +231,7 @@ final class VesselRepositoryTest extends TestCase
         $repository->getImo($vesselName);
         $last = $db->lastQuery();
         $this->assertEquals(
-            '["SELECT id,created_at,created_by,modified_at,modified_by,imo,vessel_name,visible ' .
+            '["SELECT id,created_at,created_by,modified_at,modified_by,imo,vessel_name,visible,vessel_type ' .
             'FROM public.vessel WHERE LOWER(vessel_name)=LOWER(?) ORDER BY id LIMIT ? OFFSET ?","Vessel Name",1,0]',
             json_encode($last)
         );

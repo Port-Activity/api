@@ -140,6 +140,8 @@ class VisService
         string $eta_max,
         int $port_call_id = null
     ): array {
+        $model = null;
+
         if ($port_call_id) {
             $repository = new PortCallRepository();
             $model = $repository->get($port_call_id);

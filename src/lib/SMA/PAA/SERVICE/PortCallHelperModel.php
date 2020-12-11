@@ -40,11 +40,22 @@ class PortCallHelperModel
     const TYPE_Planned                      = "Planned";
     // phpcs:ignore
     const TYPE_Estimated                    = "Estimated";
+    // phpcs:ignore
+    const TYPE_Recommended                  = "Recommended";
 
     private $data = [];
+    private $departedStates = [];
     public function __construct(array $data)
     {
         $this->data = $data;
+
+
+        $departedStatesEnv = getenv("PORT_CALL_DEPARTED_STATES");
+        if (empty($departedStatesEnv)) {
+            $this->departedStates = [self::STATE_Departure_Vessel_Berth];
+        } else {
+            $this->departedStates = explode(",", $departedStatesEnv);
+        }
     }
     public static function fromTimeStampModel(TimestampPrettyModel $model)
     {
@@ -207,15 +218,20 @@ class PortCallHelperModel
 
         return false;
     }
+    public function hasDepartedBerth(): bool
+    {
+        if ($this->timeType() === self::TYPE_Actual) {
+            if ($this->state() === self::STATE_Departure_Vessel_Berth) {
+                return true;
+            }
+        }
+
+        return false;
+    }
     public function hasDeparted(): bool
     {
         if ($this->timeType() === self::TYPE_Actual) {
-            if ($this->state() === self::STATE_Departure_Vessel_Berth ||
-            $this->state() === self::STATE_Departure_Vessel_LOC ||
-            $this->state() === self::STATE_Departure_Vessel_PortArea ||
-            // TODO: Anchorage area cannot be use until we know the direction
-            // $this->state() === self::STATE_Departure_Vessel_AnchorageArea ||
-            $this->state() === self::STATE_Departure_Vessel_TrafficArea) {
+            if (in_array($this->state(), $this->departedStates)) {
                 return true;
             }
         }

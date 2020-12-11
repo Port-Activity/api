@@ -4,9 +4,37 @@ namespace SMA\PAA\SERVICE;
 use SMA\PAA\ORM\VesselRepository;
 use SMA\PAA\ORM\VesselModel;
 use SMA\PAA\SERVICE\StateService;
+use SMA\PAA\ORM\VesselTypeRepository;
+use SMA\PAA\InvalidParameterException;
 
 class VesselService implements IVesselService
 {
+    private $vesselRepository;
+    private $vesselTypeRepository;
+    private $stateService;
+
+    public function __construct()
+    {
+        $this->setVesselRepository(new VesselRepository());
+        $this->setVesselTypeRepository(new VesselTypeRepository());
+        $this->setStateService(new StateService());
+    }
+
+    protected function setVesselRepository($vesselRepository)
+    {
+        $this->vesselRepository = $vesselRepository;
+    }
+
+    protected function setVesselTypeRepository($vesselTypeRepository)
+    {
+        $this->vesselTypeRepository = $vesselTypeRepository;
+    }
+
+    protected function setStateService($stateService)
+    {
+        $this->stateService = $stateService;
+    }
+
     public function vessel(int $imo): ?VesselModel
     {
         /*
@@ -84,9 +112,54 @@ class VesselService implements IVesselService
 
         $repository->save($model);
 
-        $service = new StateService();
-        $service->triggerPortCalls();
+        $this->stateService->triggerPortCalls();
 
         return ["result" => "OK"];
+    }
+    public function getForNotification(int $imo): ?VesselModel
+    {
+        $repository = new VesselRepository();
+        $res = $repository->first(["imo" => $imo])->filter(["id", "imo", "vessel_name"]);
+
+        return $res;
+    }
+    public function vesselTypes()
+    {
+        $query = [];
+        return $this->vesselTypeRepository->list(
+            $query,
+            0,
+            100000
+        );
+    }
+    public function updateVessel($id, $vesselType)
+    : array
+    {
+        if (!isset($id) || empty($id)) {
+            throw new InvalidParameterException("Vessel does not exist");
+        }
+
+        $vessel = $this->vesselRepository->get($id);
+        if (!isset($vessel)) {
+            throw new InvalidParameterException("Vessel does not exist");
+        }
+
+        if (!isset($vesselType) || empty($vesselType)) {
+            throw new InvalidParameterException("Invalid vessel type");
+        }
+
+        $vessel->vessel_type = $vesselType;
+
+        try {
+            if ($this->vesselRepository->save($vessel)) {
+                $this->stateService->delete(StateService::LATEST_PORT_CALLS);
+                $this->stateService->delete(StateService::LATEST_SEA_CHART_VESSELS_AND_MARKERS);
+                return ["result" => "OK"];
+            } else {
+                return ["result" => "ERROR", "message" => "Invalid vessel properties"];
+            }
+        } catch (\Exception $e) {
+            return ["result" => "ERROR", "message" => "Invalid vessel properties"];
+        }
     }
 }

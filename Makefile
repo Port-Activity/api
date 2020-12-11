@@ -22,11 +22,11 @@ remove-services:
 	docker-compose -p spia-integration -f features/docker-compose.yml rm
 
 test-integration:
-	# todo: remove sleep and build something like docker-wait.sh
-	#sleep 15
-	#docker-compose -p spia-integration -f features/docker-compose.yml exec api sh -c "cd /code && vendor/bin/behat"
-	echo "Disabled for now"
+	docker-compose -p spia-integration -f features/docker-compose.yml exec php sh -c "cd /code && vendor/bin/behat $(BEHAT_FEATURE)"
 
+test-integration-cycle: start-services
+	docker-compose -p spia-integration -f features/docker-compose.yml exec php sh -c "cd /code && vendor/bin/behat $(BEHAT_FEATURE)"
+	docker-compose -p spia-integration -f features/docker-compose.yml down
 
 lint:
 	vendor/bin/phpcs --standard=PSR2 src tests database
@@ -65,3 +65,6 @@ ci: ci-update install lint test build-env
 
 split-country-codes:
 	./split-unlodes-by-country.sh
+
+ build-api-documentation:
+	php api-generate-documentation.php > api.md

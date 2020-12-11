@@ -57,6 +57,27 @@ Database requires migration when changed. To migrate database do:
 #> make test
 ```
 
+### Run behat tests
+All tests can be run with:
+
+```
+make test-integration-cycle
+```
+
+Single test can be run with:
+
+```
+make test-integration-cycle BEHAT_FEATURE=features/<FEATURE_FILE>
+```
+
+All behat tests assume clean database.
+Behat containers are not automatically cleaned when tests fail.
+Containers can be cleaned with:
+
+```
+make stop-services
+```
+
 #### Test coverage
 Coverage should be generated whenever test are executed. However you need to intall xdebug.
 
@@ -83,6 +104,48 @@ pecl install xdebug
 }'
 
 {"message":"authentication ok"}
+```
+
+### Call Sea Chart API
+
+Updating vessel locations (IMO is optional):
+```
+curl 'http://localhost:8000/sea-chart/vessels' \
+-H 'Authorization: ApiKey [VALID-API-KEY]' \
+-H 'Content-Type: application/json' \
+-X POST \
+-d '{"locations":[{"imo": 100000181, "mmsi": 230928000,"latitude": 60.803207, \
+"longitude": 17.856447, "headingDegrees": 120.4,"speedKnots": 4.6, \
+"locationTimestamp":"2020-11-12T12:03:05+00:00","courseOverGroundDegrees":90}]}'
+```
+
+Getting fixed vessels (search is optional):
+```
+curl -X GET -G 'http://localhost:8000/sea-chart/fixed-vessels' \
+-H 'Authorization: ApiKey [VALID-API-KEY]' \
+-H 'Content-Type: application/json' \
+-d limit=10 \
+-d offset=0 \
+-d sort=vessel_name \
+-d search=Tug
+```
+
+Adding fixed vessel (IMO is optional):
+```
+curl 'http://localhost:8000/sea-chart/fixed-vessel' \
+-H 'Authorization: ApiKey [VALID-API-KEY]' \
+-H 'Content-Type: application/json' \
+-X POST \
+-d '{"mmsi": 316041365,"markerTypeId":2,"vesselName":"TugFixed","imo": null}'
+```
+
+Deleting fixed vessel:
+```
+curl 'http://localhost:8000/sea-chart/fixed-vessel' \
+-H 'Authorization: ApiKey [VALID-API-KEY]' \
+-H 'Content-Type: application/json' \
+-X DELETE \
+-d '{"id": 9}'
 ```
 
 ## Alternative for makefile: docker-compose

@@ -113,10 +113,12 @@ EOL,
         $this->deleteRelatedStates();
         return $data;
     }
-    public function save(OrmModel $model, bool $skipCrudLog = false)
+    public function save(OrmModel $model, bool $skipCrudLog = false, bool $invalidateCache = true)
     {
         $data = parent::save($model, $skipCrudLog);
-        $this->deleteRelatedStates();
+        if ($invalidateCache) {
+            $this->deleteRelatedStates();
+        }
         return $data;
     }
     private function deleteRelatedStates()

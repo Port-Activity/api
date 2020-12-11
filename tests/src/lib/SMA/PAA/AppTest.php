@@ -2,12 +2,13 @@
 namespace SMA\PAA;
 
 use PHPUnit\Framework\TestCase;
+use SMA\PAA\SERVICE\FakeStateService;
 
 final class AppTest extends TestCase
 {
     public function testCanBeCreated(): void
     {
-        $app = new App(new Server([]));
+        $app = new App(new Server([]), new FakeStateService());
         $this->assertInstanceOf(
             "SMA\PAA\App",
             $app
@@ -15,7 +16,10 @@ final class AppTest extends TestCase
     }
     public function testRouteAliasFindsWithPath(): void
     {
-        $app = new App(new Server(["REQUEST_METHOD" => "GET", "REQUEST_URI" => "/"]));
+        $app = new App(
+            new Server(["REQUEST_METHOD" => "GET", "REQUEST_URI" => "/"]),
+            new FakeStateService()
+        );
         $app->setAliases([
             "GET:/" => "public:Diagnostics:hello"
         ]);
@@ -26,7 +30,10 @@ final class AppTest extends TestCase
     }
     public function testRouteAliasFindsWithPathAndParameters(): void
     {
-        $app = new App(new Server(["REQUEST_METHOD" => "GET", "REQUEST_URI" => "/echo/foo"]));
+        $app = new App(
+            new Server(["REQUEST_METHOD" => "GET", "REQUEST_URI" => "/echo/foo"]),
+            new FakeStateService()
+        );
         $app->setAliases([
             "GET:/echo/:string" => "public:Diagnostics:echo"
         ]);
@@ -37,7 +44,10 @@ final class AppTest extends TestCase
     }
     public function testRouteAliasFindsWithPathAndMultipleParameters(): void
     {
-        $app = new App(new Server(["REQUEST_METHOD" => "GET", "REQUEST_URI" => "/echo/foo/bar"]));
+        $app = new App(
+            new Server(["REQUEST_METHOD" => "GET", "REQUEST_URI" => "/echo/foo/bar"]),
+            new FakeStateService()
+        );
         $app->setAliases([
             "GET:/echo/:string/:string2" => "public:Diagnostics:echoTwo"
         ]);
@@ -48,7 +58,10 @@ final class AppTest extends TestCase
     }
     public function testRouteAliasWithDifferentProtocolsWithSamePathName(): void
     {
-        $app = new App(new Server(["REQUEST_METHOD" => "GET", "REQUEST_URI" => "/echo/fooget"]));
+        $app = new App(
+            new Server(["REQUEST_METHOD" => "GET", "REQUEST_URI" => "/echo/fooget"]),
+            new FakeStateService()
+        );
         $app->setAliases([
             "GET:/echo" => "public:Diagnostics:echo"
             ,"GET:/echo/:string" => "public:Diagnostics:echo"
@@ -58,7 +71,10 @@ final class AppTest extends TestCase
             $app->run()
         );
 
-        $app = new App(new Server(["REQUEST_METHOD" => "GET", "REQUEST_URI" => "/echo"]));
+        $app = new App(
+            new Server(["REQUEST_METHOD" => "GET", "REQUEST_URI" => "/echo"]),
+            new FakeStateService()
+        );
         $app->setAliases([
             "GET:/echo" => "public:Diagnostics:hello"
             ,"GET:/echo/:string" => "public:Diagnostics:echo"
@@ -71,7 +87,10 @@ final class AppTest extends TestCase
 
     public function testRouteAliasWithDifferentProtocolsWithSamePathNameWhenQueryStrings(): void
     {
-        $app = new App(new Server(["REQUEST_METHOD" => "GET", "REQUEST_URI" => "/echo?limit=10"]));
+        $app = new App(
+            new Server(["REQUEST_METHOD" => "GET", "REQUEST_URI" => "/echo?limit=10"]),
+            new FakeStateService()
+        );
         $app->setAliases([
             "GET:/echo" => "public:Diagnostics:hello"
             ,"GET:/echo/:string" => "public:Diagnostics:echo"
@@ -88,7 +107,8 @@ final class AppTest extends TestCase
                 ["REQUEST_METHOD" => "POST", "REQUEST_URI" => "/echo"],
                 [],
                 ["string" => "  trim me "]
-            )
+            ),
+            new FakeStateService()
         );
         $app->setAliases([
             "POST:/echo" => "public:Diagnostics:echo"
@@ -105,7 +125,8 @@ final class AppTest extends TestCase
                 ["REQUEST_METHOD" => "POST", "REQUEST_URI" => "/echo"],
                 [],
                 ["values" => ["foo" => " bar "]]
-            )
+            ),
+            new FakeStateService()
         );
         $app->setAliases([
             "POST:/echo" => "public:Diagnostics:echoArray"

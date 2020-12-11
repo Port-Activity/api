@@ -3,6 +3,8 @@ namespace SMA\PAA\SERVICE;
 
 use PHPUnit\Framework\TestCase;
 use SMA\PAA\Session;
+use SMA\PAA\ORM\FakeConnection;
+use SMA\PAA\ORM\OrmRepository;
 
 final class UserServiceTest extends TestCase
 {
@@ -12,6 +14,14 @@ final class UserServiceTest extends TestCase
      */
     public function testRegisterFailsWhenPasswordIsTooShort(): void
     {
+        OrmRepository::injectFakeDb(
+            new FakeConnection(
+                ["enabled" => "t",
+                    "code" => "thecode",
+                    "role" => "user",
+                    "description" => "User code"]
+            )
+        );
         $service = new UserService();
         $service->register("jack", "theripper", "thecode", "foo@bar", "pwtooshort");
     }

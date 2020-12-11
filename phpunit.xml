@@ -34,6 +34,8 @@
         <env name="VIS_SYNC_POINT_RADIUS" value="1234"/>
         <env name="MAP_DEFAULT_COORDINATES" value="60.699083,17.328354"/>
         <env name="MAP_DEFAULT_ZOOM" value="6"/>
+        <env name="MAP_VESSEL_LOCATION_MAX_AGE_MINUTES" value="120"/>
+        
     </php>
 
 </phpunit>

@@ -11,7 +11,13 @@ class SettingService
     private function validateInput(string $name, string $value)
     {
         $valid = true;
-        if (in_array($name, array("activity_module", "logistics_module", "queue_module", "map_module"))) {
+        if (in_array($name, array(
+            "activity_module",
+            "logistics_module",
+            "queue_module",
+            "map_module",
+            "codeless_registration_module"
+            ))) {
             if ($value !== "enabled" && $value !== "disabled") {
                 $valid = false;
             }
@@ -92,6 +98,27 @@ class SettingService
 
         $model->setValue($value);
         $repository->save($model);
+
+        $res[$model->name] = $model->value;
+
+        return $res;
+    }
+
+    public function getPublicSettingByName(string $name): array
+    {
+        $res = [];
+
+        $validNames = ["codeless_registration_module"];
+
+        if (!in_array($name, $validNames)) {
+            throw new InvalidParameterException("Invalid setting name: " . $name);
+        }
+
+        $repository = new SettingRepository();
+        $model = $repository->getSetting($name);
+        if ($model === null) {
+            throw new InvalidParameterException("Invalid setting name: " . $name);
+        }
 
         $res[$model->name] = $model->value;
 

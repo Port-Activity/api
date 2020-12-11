@@ -21,7 +21,7 @@ final class UserRepositoryTest extends TestCase
             '"UPDATE public.user SET created_at = ?,created_by = ?,modified_at = ?,modified_by = ?'
             . ',email = ?,password_hash = ?,first_name = ?,last_name = ?,role_id = ?'
             . ',last_login_time = ?,last_login_data = ?,last_session_time = ?,registration_code_id = ?'
-            . ',status = ?,time_zone = ? '
+            . ',status = ?,time_zone = ?,failed_logins = ?,suspend_start = ?,locked = ?,registration_type = ? '
             . 'WHERE id=?"',
             json_encode(array_shift($last))
         );
@@ -29,7 +29,7 @@ final class UserRepositoryTest extends TestCase
         $last[2] = "<date>";
         $this->assertEquals(
             '["<date>",null,"<date>",0,"jack.white@acme.com",null,"Jack","White",'
-            . 'null,null,null,null,null,"active",null,123]',
+            . 'null,null,null,null,null,"active",null,0,null,"f","",123]',
             json_encode($last)
         );
     }
@@ -47,14 +47,16 @@ final class UserRepositoryTest extends TestCase
         $this->assertEquals(
             '"INSERT INTO public.user '
             . '(created_at,created_by,modified_at,modified_by,email,password_hash,first_name,last_name,role_id,'
-            . 'last_login_time,last_login_data,last_session_time,registration_code_id,status,time_zone) '
-            . 'VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"',
+            . 'last_login_time,last_login_data,last_session_time,registration_code_id,status,time_zone,'
+            . 'failed_logins,suspend_start,locked,registration_type) '
+            . 'VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"',
             json_encode(array_shift($last))
         );
         $last[0] = "<date>";
         $last[2] = "<date>";
         $this->assertEquals(
-            '["<date>",0,"<date>",0,"jack.white@acme.com",null,"Jack","White",null,null,null,null,null,"active",null]',
+            '["<date>",0,"<date>",0,"jack.white@acme.com",null,"Jack","White",null,null,null,null,null,"active",null,'
+            . '0,null,"f",""]',
             json_encode($last)
         );
     }
@@ -94,7 +96,8 @@ final class UserRepositoryTest extends TestCase
         $this->assertEquals(
             '["SELECT id,created_at,created_by,modified_at,modified_by,'
             . 'email,password_hash,first_name,last_name,role_id,'
-            . 'last_login_time,last_login_data,last_session_time,registration_code_id,status,time_zone '
+            . 'last_login_time,last_login_data,last_session_time,registration_code_id,status,time_zone,'
+            . 'failed_logins,suspend_start,locked,registration_type '
             . 'FROM public.user WHERE first_name=? '
             . 'ORDER BY id LIMIT ? OFFSET ?","Foo",10,0]',
             json_encode($db->lastQuery())
@@ -109,7 +112,8 @@ final class UserRepositoryTest extends TestCase
         $this->assertEquals(
             '["SELECT id,created_at,created_by,modified_at,'
             . 'modified_by,email,password_hash,first_name,last_name,role_id,'
-            . 'last_login_time,last_login_data,last_session_time,registration_code_id,status,time_zone '
+            . 'last_login_time,last_login_data,last_session_time,registration_code_id,status,time_zone,'
+            . 'failed_logins,suspend_start,locked,registration_type '
             . 'FROM public.user ORDER BY id LIMIT ? OFFSET ?",10,0]',
             json_encode($db->lastQuery())
         );

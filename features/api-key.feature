@@ -4,7 +4,7 @@ Feature: Api-key
   Scenario: Creating new API KEY
     Given I am logged in
     When I add new API KEY
-    And Attach timestamp there
+    And Attach ETD to new API key
     Then I should be able to push timestamp of that type into api
     And I should be able to push timestamp of that type into api vis agent rest timestamp api
 
@@ -13,8 +13,8 @@ Feature: Api-key
     Given I am logged in
     When I add new API KEY
     And set API KEY as inactive
-    And Attach timestamp there
-    Then Timstamp add should be rejected
+    And Attach ETD to new API key
+    Then Timestamp add should be rejected
 
   Scenario: Posting logistics timestamp
     Given I am logged in

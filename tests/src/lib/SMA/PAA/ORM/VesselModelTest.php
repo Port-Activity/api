@@ -11,7 +11,7 @@ class VesselModelTest extends TestCase
         $this->assertEquals(
             json_encode($model->buildFields()),
             '["id","created_at","created_by","modified_at",'
-            . '"modified_by","imo","vessel_name","visible"]'
+            . '"modified_by","imo","vessel_name","visible","vessel_type"]'
         );
     }
     public function testBuildingValues(): void
@@ -20,10 +20,11 @@ class VesselModelTest extends TestCase
         $model->id = 1;
         $model->imo = 1234567;
         $model->vessel_name = "Vessel";
+        $model->vessel_type = 5;
         $this->assertEquals(
             json_encode($model->buildValues($model->buildFields())),
             '{"id":1,"created_at":null,"created_by":null,"modified_at":null,'
-            . '"modified_by":null,"imo":1234567,"vessel_name":"Vessel","visible":"t"}'
+            . '"modified_by":null,"imo":1234567,"vessel_name":"Vessel","visible":"t","vessel_type":5}'
         );
     }
 

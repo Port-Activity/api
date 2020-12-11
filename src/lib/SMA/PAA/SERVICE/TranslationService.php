@@ -6,6 +6,18 @@ use SMA\PAA\ORM\TranslationRepository;
 
 class TranslationService
 {
+    private $apiNamespace = "";
+    private $apiLanguage = "";
+
+    public function __construct()
+    {
+        $this->apiNamespace = getenv("NAMESPACE");
+        $this->apiLanguage = getenv("LANGUAGE");
+        if (empty($this->apiLanguage)) {
+            $this->apiLanguage = "en";
+        }
+    }
+
     public function get(string $ns, string $lng)
     {
         $result = [];
@@ -69,5 +81,21 @@ class TranslationService
             return $res->value;
         }
         return null;
+    }
+
+    public function t(string $string): string
+    {
+        $res = $this->getValueFor($this->apiNamespace, $this->apiLanguage, $string);
+
+        if ($res === null) {
+            error_log(
+                "Missing translation for " .
+                $this->apiNamespace . ", " . $this->apiLanguage .
+                ": " . $string
+            );
+            $res = $string;
+        }
+
+        return $res;
     }
 }

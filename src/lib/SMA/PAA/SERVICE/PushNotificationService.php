@@ -23,7 +23,9 @@ class PushNotificationService
                     // Don't send to push notification to sender
                     continue;
                 }
-                if ($data->type == "ship") {
+                if ($data->type == "ship" ||
+                    $data->type == "port_call_decision" ||
+                    $data->type == "port_call_decision_response") {
                     $pinnedVesselService = new PinnedVesselService();
                     $pinned = $pinnedVesselService->getVesselIdsForUser($token->user_id);
                     if (in_array($data->ship_imo, $pinned)) {
@@ -38,6 +40,20 @@ class PushNotificationService
                     $title = $data->ship->vessel_name;
                 } else {
                     $title = "Ship #" . $data->ship_imo;
+                }
+                $body = $data->message;
+            } elseif ($data->type == "port_call_decision") {
+                if ($data->ship && $data->ship->vessel_name) {
+                    $title = "New decision for " . $data->ship->vessel_name;
+                } else {
+                    $title = "New decision for ship #" . $data->ship_imo;
+                }
+                $body = $data->message;
+            } elseif ($data->type == "port_call_decision_response") {
+                if ($data->ship && $data->ship->vessel_name) {
+                    $title = "New response for " . $data->ship->vessel_name;
+                } else {
+                    $title = "New response for ship #" . $data->ship_imo;
                 }
                 $body = $data->message;
             } else {
